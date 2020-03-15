@@ -32,6 +32,8 @@
   "SDKVersion": 2,
   "Author": "SantiMA10",
   "PropertyInspectorPath": "pi/index.html",
+  "Category": "DevOps for Stream Deck",
+  "CategoryIcon": "images/categoryIcon",
   "CodePath": "plugin/index.html",
   "Description": "Check the status of your CI/CD environments.",
   "Name": "DevOps for StreamDeck",
