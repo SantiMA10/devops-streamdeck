@@ -1,20 +1,23 @@
-# DevOps Stream Deck
+# DevOps for Stream Deck
 
 > Check the status of your CI/CD environments using your Stream Deck
 
-- [How it works?](#How-it-works)
-  - [GitHub](#GitHub)
+- [How it works?](#how-it-works)
+  - [Install this plugin](#install-this-plugin)
+  - [GitHub](#github)
+     - [Get you Personal Token](#get-you-personal-token)
+     - [Configure your action](#configure-your-action)
 - [References](#references)
-- [Contributing](#Contributing)
-- [Issues](#Issues)
+- [Contributing](#contributing)
+- [Issues](#issues)
 
 # How it works?
 
-## GitHub
-
-### Install this plugin
+## Install this plugin
 
 At the moment this plugin is not published at the Stream Deck Store so you have to download the repo as a ZIP and follow [the instructions the el gato provides here](https://developer.elgato.com/documentation/stream-deck/sdk/create-your-own-plugin/).
+
+## GitHub
 
 ### Get you Personal Token
 
