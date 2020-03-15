@@ -1,11 +1,11 @@
 {
   "Actions": [
     {
-      "Icon": "images/actionIcon",
+      "Icon": "images/github/actionIcon",
       "Name": "GitHub Actions Status",
       "States": [
         {
-          "Image": "images/actionDefaultImage",
+          "Image": "images/github/actionDefaultImage",
           "TitleAlignment": "bottom",
           "FontSize": "11"
         }
@@ -13,6 +13,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Check the status of you GitHub Actions.",
       "UUID": "dev.santiagomartin.devops.github.action"
+    },
+    {
+      "Icon": "images/gitlab/actionIcon",
+      "Name": "GitLab CI Status",
+      "States": [
+        {
+          "Image": "images/gitlab/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the status of you GitLab CI.",
+      "UUID": "dev.santiagomartin.devops.gitlab.action"
     }
   ],
   "SDKVersion": 2,

@@ -1,26 +1,26 @@
 /**
-* MIT License
-*
-* Copyright (c) 2020 Santiago Martín
-* 
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
+ * MIT License
+ *
+ * Copyright (c) 2020 Santiago Martín
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 var websocket = null;
 var pluginUUID = null;
 
@@ -31,6 +31,17 @@ var DestinationEnum = Object.freeze({
 });
 
 var timer;
+
+class ActionFactory {
+  static build(action) {
+    switch (action) {
+      case "dev.santiagomartin.devops.github.action":
+        return new GitHubAction();
+      case "dev.santiagomartin.devops.gitlab.action":
+        return new GitLabAction();
+    }
+  }
+}
 
 class GitHubAction {
   type = "dev.santiagomartin.devops.github.action";
@@ -54,6 +65,55 @@ class GitHubAction {
     }
 
     this.setTitle(context, workflow_runs[0].status);
+  }
+
+  onKeyUp(context, settings) {
+    return this.load(context, settings);
+  }
+
+  onWillAppear(context, settings) {
+    return this.load(context, settings);
+  }
+
+  setTitle(context, title) {
+    var json = {
+      event: "setTitle",
+      context: context,
+      payload: {
+        title,
+        target: DestinationEnum.HARDWARE_AND_SOFTWARE
+      }
+    };
+
+    websocket.send(JSON.stringify(json));
+  }
+}
+
+class GitLabAction {
+  type = "dev.santiagomartin.devops.gitlab.action";
+
+  async load(context, { token, repo }) {
+    this.setTitle(context, "loading...");
+
+    if (!token || !repo) {
+      return this.setTitle(context, "error");
+    }
+
+    const pipelines = await fetch(
+      `https://gitlab.com/api/v4/projects/${repo.replace(
+        "/",
+        "%2F"
+      )}/pipelines`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    ).then(res => res.json());
+
+    if (pipelines.length === 0) {
+      return this.setTitle(context, "undefined");
+    }
+
+    this.setTitle(context, pipelines[0].status);
   }
 
   onKeyUp(context, settings) {
@@ -107,20 +167,21 @@ function connectElgatoStreamDeckSocket(
     // Received message from Stream Deck
     var jsonObj = JSON.parse(evt.data);
     var event = jsonObj["event"];
-    var action = jsonObj["action"];
     var context = jsonObj["context"];
+
+    const action = ActionFactory.build(jsonObj["action"]);
 
     switch (event) {
       case "keyUp":
         var jsonPayload = jsonObj["payload"];
         var settings = jsonPayload["settings"];
 
-        return new GitHubAction().onKeyUp(context, settings);
+        return action.onKeyUp(context, settings);
       case "willAppear":
         var jsonPayload = jsonObj["payload"];
         var settings = jsonPayload["settings"];
 
-        return new GitHubAction().onWillAppear(context, settings);
+        return action.onWillAppear(context, settings);
     }
   };
 
