@@ -1,0 +1,8 @@
+{
+  "Description": "Check the status of your CI/CD environments.",
+  "Name": "DevOps tool",
+  "dev.santiagomartin.devops.github.action": {
+    "Name": "GitHub Actions Status",
+    "Tooltip": "Check the status of you GitHub Actions."
+  }
+}

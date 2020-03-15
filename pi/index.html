@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>dev.santiagomartin.devops - Property Inspector</title>
+    <link rel="stylesheet" href="css/sdpi.css">
+  </head>
+
+  <body>
+    <div class="sdpi-wrapper">
+      <div class="sdpi-item">
+        <label class="sdpi-item-label" for="token">GitHub Token</label>
+        <input class="sdpi-item-value" id="token" type="password" onchange="onValueChange(event.target.value, 'token')">
+      </div>
+      <div class="sdpi-item">
+        <label class="sdpi-item-label" for="repo">GitHub username/repo</label>
+        <input class="sdpi-item-value" id="repo" type="text" onchange="onValueChange(event.target.value, 'repo')">
+      </div>
+    <div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
