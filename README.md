@@ -2,8 +2,9 @@
 
 > Check the status of your CI/CD environments using your Stream Deck
 
-- [How it works?](#How-it-works?)
+- [How it works?](#How-it-works)
   - [GitHub](#GitHub)
+- [References](#references)
 - [Contributing](#Contributing)
 - [Issues](#Issues)
 
