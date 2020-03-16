@@ -18,7 +18,7 @@
 
 ## Install this plugin
 
-At the moment this plugin is not published at the Stream Deck Store so you have to download the repo as a ZIP and follow [the instructions the el gato provides here](https://developer.elgato.com/documentation/stream-deck/sdk/create-your-own-plugin/).
+You can find it at the Stream Deck Store.
 
 ## GitHub
 
