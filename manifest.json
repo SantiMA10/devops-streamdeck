@@ -39,7 +39,7 @@
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
-  "Version": "1.0",
+  "Version": "1.0.1",
   "OS": [
     {
       "Platform": "mac",
