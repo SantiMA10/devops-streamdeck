@@ -69,28 +69,37 @@ class GitHubAction {
 class GitLabAction {
   type = "dev.santiagomartin.devops.gitlab.action";
 
-  async load(context, { token, repo }) {
+  async load(context, settings) {
+    const { token, repo } = settings;
+
     this.setTitle(context, "loading...");
 
     if (!token || !repo) {
       return this.setTitle(context, "error");
     }
 
-    const pipelines = await fetch(
-      `https://gitlab.com/api/v4/projects/${repo.replace(
-        "/",
-        "%2F"
-      )}/pipelines`,
-      {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-    ).then(res => res.json());
+    const pipelines = await fetch(this.getUrl(settings), {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => res.json());
 
     if (pipelines.length === 0) {
       return this.setTitle(context, "undefined");
     }
 
     this.setTitle(context, pipelines[0].status);
+  }
+
+  getUrl({ branch, repo }) {
+    const baseUrl = `https://gitlab.com/api/v4/projects/${repo.replace(
+      "/",
+      "%2F"
+    )}/pipelines`;
+
+    if (branch) {
+      return `${baseUrl}?ref=${branch}`;
+    }
+
+    return baseUrl;
   }
 
   onKeyUp(context, settings) {

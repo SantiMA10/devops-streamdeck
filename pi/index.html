@@ -9,12 +9,16 @@
   <body>
     <div class="sdpi-wrapper">
       <div class="sdpi-item">
-        <label class="sdpi-item-label" for="token">Token</label>
-        <input class="sdpi-item-value" id="token" type="password" onchange="onValueChange(event.target.value, 'token')">
+        <label class="sdpi-item-label" for="token">token*</label>
+        <input class="sdpi-item-value" id="token" type="password" required onchange="onValueChange(event.target.value, 'token')">
       </div>
       <div class="sdpi-item">
-        <label class="sdpi-item-label" for="repo">username/repo</label>
-        <input class="sdpi-item-value" id="repo" type="text" onchange="onValueChange(event.target.value, 'repo')">
+        <label class="sdpi-item-label" for="repo">username/repo*</label>
+        <input class="sdpi-item-value" id="repo" type="text" required onchange="onValueChange(event.target.value, 'repo')">
+      </div>
+      <div id="branch-group" class="sdpi-item">
+        <label class="sdpi-item-label" for="branch">branch</label>
+        <input class="sdpi-item-value" id="branch" type="text" onchange="onValueChange(event.target.value, 'branch')">
       </div>
       <div class="sdpi-item">
         <button class="sdpi-item-value" id="github" onclick="openGitHub()">How it works?</button>
