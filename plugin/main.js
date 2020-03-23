@@ -21,6 +21,7 @@ class ActionFactory {
 }
 
 class GitHubAction {
+  apiDomain = "https://api.github.com";
   type = "dev.santiagomartin.devops.github.action";
 
   async load(context, settings) {
@@ -41,8 +42,8 @@ class GitHubAction {
     this.setTitle(context, workflow_runs[0].status);
   }
 
-  getUrl({ branch, repo }) {
-    const baseUrl = `https://api.github.com/repos/${repo}/actions/runs`;
+  getUrl({ branch, repo, domain }) {
+    const baseUrl = `${this.apiDomain || domain}/repos/${repo}/actions/runs`;
 
     if (branch) {
       return `${baseUrl}?branch=${branch}`;
@@ -74,6 +75,7 @@ class GitHubAction {
 }
 
 class GitLabAction {
+  apiDomain = "https://gitlab.com";
   type = "dev.santiagomartin.devops.gitlab.action";
 
   async load(context, settings) {
@@ -96,8 +98,8 @@ class GitLabAction {
     this.setTitle(context, pipelines[0].status);
   }
 
-  getUrl({ branch, repo }) {
-    const baseUrl = `https://gitlab.com/api/v4/projects/${repo.replace(
+  getUrl({ branch, repo, domain }) {
+    const baseUrl = `${this.apiDomain || domain}/api/v4/projects/${repo.replace(
       "/",
       "%2F"
     )}/pipelines`;
