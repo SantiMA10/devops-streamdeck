@@ -12,10 +12,6 @@ function connectElgatoStreamDeckSocket(
   uuid = inUUID;
   actionInfo = JSON.parse(inActionInfo); // cache the info
 
-  if (!actionInfo.action.includes("gitlab")) {
-    document.getElementById("branch-group").style = "display: none;";
-  }
-
   if (actionInfo.payload && actionInfo.payload.settings) {
     Object.keys(actionInfo.payload.settings).forEach(
       key =>

@@ -30,18 +30,25 @@ class GitHubAction {
       return this.setTitle(context, "error");
     }
 
-    const { workflow_runs, total_count } = await fetch(
-      `https://api.github.com/repos/${settings.repo}/actions/runs`,
-      {
-        headers: { Authorization: `Bearer ${settings.token}` }
-      }
-    ).then(res => res.json());
+    const { workflow_runs, total_count } = await fetch(this.getUrl(settings), {
+      headers: { Authorization: `Bearer ${settings.token}` }
+    }).then(res => res.json());
 
     if (total_count === 0) {
       return this.setTitle(context, "undefined");
     }
 
     this.setTitle(context, workflow_runs[0].status);
+  }
+
+  getUrl({ branch, repo }) {
+    const baseUrl = `https://api.github.com/repos/${repo}/actions/runs`;
+
+    if (branch) {
+      return `${baseUrl}?branch=${branch}`;
+    }
+
+    return baseUrl;
   }
 
   onKeyUp(context, settings) {
