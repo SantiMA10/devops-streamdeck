@@ -43,7 +43,7 @@ class GitHubAction {
   }
 
   getUrl({ branch, repo, domain }) {
-    const baseUrl = `${this.apiDomain || domain}/repos/${repo}/actions/runs`;
+    const baseUrl = `${domain || this.apiDomain}/repos/${repo}/actions/runs`;
 
     if (branch) {
       return `${baseUrl}?branch=${branch}`;
@@ -99,7 +99,7 @@ class GitLabAction {
   }
 
   getUrl({ branch, repo, domain }) {
-    const baseUrl = `${this.apiDomain || domain}/api/v4/projects/${repo.replace(
+    const baseUrl = `${domain || this.apiDomain}/api/v4/projects/${repo.replace(
       "/",
       "%2F"
     )}/pipelines`;
