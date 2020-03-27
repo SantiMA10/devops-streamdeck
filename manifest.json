@@ -34,7 +34,7 @@
   "PropertyInspectorPath": "pi/index.html",
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
-  "CodePath": "plugin/index.html",
+  "CodePath": "dist/plugin/index.html",
   "Description": "Check the status of your GitLab CI or GitHub Actions.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
