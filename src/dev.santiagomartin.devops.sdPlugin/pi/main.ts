@@ -53,3 +53,5 @@ function openGitHub() {
 
   websocket.send(JSON.stringify(json));
 }
+
+module.exports = connectElgatoStreamDeckSocket;

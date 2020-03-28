@@ -11,9 +11,11 @@
     "test:watch": "jest --watch",
     "test:plugin": "yarn test plugin",
     "test:plugin:watch": "yarn test:watch plugin",
-    "dev:plugin": "parcel plugin/index.html -d dist/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build:plugin": "parcel build plugin/index.html -d dist/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build": "yarn build:plugin"
+    "dev:pi": "parcel src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
+    "dev:plugin": "parcel src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
+    "build:pi": "parcel build src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
+    "build:plugin": "parcel build src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
+    "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && cp manifest.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
   },
   "dependencies": {
     "parcel-bundler": "^1.12.4"
