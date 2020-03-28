@@ -11,17 +11,26 @@
     "test:watch": "jest --watch",
     "test:plugin": "yarn test plugin",
     "test:plugin:watch": "yarn test:watch plugin",
+    "dev:setup": "parcel src/dev.santiagomartin.devops.sdPlugin/setup/index.html -d dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
     "dev:pi": "parcel src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
     "dev:plugin": "parcel src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
+    "build:setup": "parcel src/dev.santiagomartin.devops.sdPlugin/setup/index.html -d dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
     "build:pi": "parcel build src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
     "build:plugin": "parcel build src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && cp manifest.dist.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
+    "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && yarn build:setup && cp manifest.dist.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
   },
   "dependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "@types/jest": "^25.1.4",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.5",
     "jest": "^25.2.3",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"

@@ -56,6 +56,10 @@ document.getElementById("github")?.addEventListener("click", () => {
   websocket.send(JSON.stringify(json));
 });
 
+document.getElementById("setup")?.addEventListener("click", () => {
+  window.open("../setup/index.html");
+});
+
 Array.from(document.getElementsByTagName("input")).forEach(input =>
   input.addEventListener("keyup", event => {
     if (!event.target) {
