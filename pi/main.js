@@ -31,6 +31,7 @@ function connectElgatoStreamDeckSocket(
 
 function onValueChange(value, id) {
   const json = {
+    action: actionInfo.action,
     event: "setSettings",
     context: uuid,
     payload: {
