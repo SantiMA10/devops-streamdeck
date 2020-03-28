@@ -41,12 +41,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn
       - run: yarn build
-      - name: Delete node_modules
-        run: rm -Rf node_modules
-      - name: Delete .cache
-        run: rm -Rf .cache
       - name: Generate .streamDeckPlugin
-        run: ./tools/mac/DistributionTool -b -i ./ -o ./release/
+        run: ./tools/mac/DistributionTool -b -i ./dist/dev.santiagomartin.devops.sdPlugin -o ./release/
       - name: Upload .streamDeckPlugin artifact
         uses: actions/upload-artifact@v1.0.0
         with:
