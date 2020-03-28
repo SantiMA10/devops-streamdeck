@@ -30,20 +30,22 @@ function connectElgatoStreamDeckSocket(
 }
 
 function onValueChange(value, id) {
+  actionInfo.payload.settings = {
+    ...actionInfo.payload.settings,
+    [id]: value
+  };
+
   const json = {
     action: actionInfo.action,
     event: "setSettings",
     context: uuid,
-    payload: {
-      ...actionInfo.payload.settings,
-      [id]: value
-    }
+    payload: actionInfo.payload.settings
   };
 
   websocket.send(JSON.stringify(json));
 }
 
-function openGitHub() {
+document.getElementById("github")?.addEventListener("click", () => {
   const json = {
     event: "openUrl",
     payload: {
@@ -52,6 +54,16 @@ function openGitHub() {
   };
 
   websocket.send(JSON.stringify(json));
-}
+});
+
+Array.from(document.getElementsByTagName("input")).forEach(input =>
+  input.addEventListener("keyup", event => {
+    if (!event.target) {
+      return;
+    }
+
+    onValueChange(event.target.value, event.target.id);
+  })
+);
 
 module.exports = connectElgatoStreamDeckSocket;
