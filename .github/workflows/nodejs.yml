@@ -53,4 +53,4 @@ jobs:
           # Artifact name
           name: dev.santiagomartin.devops.streamDeckPlugin
           # Directory containing files to upload
-          path: ./dev.santiagomartin.devops.streamDeckPlugin
+          path: ./release/
