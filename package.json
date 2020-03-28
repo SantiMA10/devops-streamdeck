@@ -15,7 +15,7 @@
     "dev:plugin": "parcel src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
     "build:pi": "parcel build src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
     "build:plugin": "parcel build src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && cp manifest.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
+    "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && cp manifest.dist.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
   },
   "dependencies": {
     "parcel-bundler": "^1.12.4"
