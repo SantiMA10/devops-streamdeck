@@ -8,6 +8,7 @@
   - [Get you Personal Token](#get-you-personal-token)
     - [GitHub](#github)
     - [GitLab](#gitlab)
+    - [Netlify](#netlify)
 - [References](#references)
 - [Contributing](#contributing)
 - [Issues](#issues)
@@ -20,11 +21,11 @@ You can find it at the Stream Deck Store. 🚀
 
 ## Configuration options
 
-| Field           | Description                                                                                                              | Required |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
-| `account`       | Here you can select your [Personal Token](#get-you-personal-token) and custom `domain` if you use a self-hosted version. | Yes      |
-| `username/repo` | Configure here the repo.                                                                                                 | Yes      |
-| `branch`        | Select the branch to monitor or leave it empty to show info from all branches.                                           | No       |
+| Field                    | Description                                                                                                              | Required |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `account`                | Here you can select your [Personal Token](#get-you-personal-token) and custom `domain` if you use a self-hosted version. | Yes      |
+| `username/repo`/`siteId` | Configure here the repo for GitLab/GitHub or the site id for Netlify                                                     | Yes      |
+| `branch`                 | Select the branch to monitor or leave it empty to show info from all branches.                                           | No       |
 
 ## Get you Personal Token
 
@@ -39,6 +40,16 @@ You have to create a new [Personal Token](https://github.com/settings/tokens) wi
 You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
 
 ![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
+
+### Netlify
+
+#### Personal Token
+
+You have to create a new [Personal Token](https://app.netlify.com/user/applications#personal-access-tokens).
+
+#### Site ID
+
+You can find your site id in the settings tab of your project, with the **API ID** name.
 
 # References
 
