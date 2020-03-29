@@ -20,12 +20,11 @@ You can find it at the Stream Deck Store. 🚀
 
 ## Configuration options
 
-| Field           | Description                                                                           | Required |
-| --------------- | ------------------------------------------------------------------------------------- | -------- |
-| `token`         | Paste here your [Personal Token](#get-you-personal-token).                            | Yes      |
-| `username/repo` | Configure here the repo.                                                              | Yes      |
-| `branch`        | Select the branch to monitor or leave it empty to show info from all branches.        | No       |
-| `domain`        | If you have self-hosted version you can set your main here, otherwise leave it empty. | No       |
+| Field           | Description                                                                                                              | Required |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `account`       | Here you can select your [Personal Token](#get-you-personal-token) and custom `domain` if you use a self-hosted version. | Yes      |
+| `username/repo` | Configure here the repo.                                                                                                 | Yes      |
+| `branch`        | Select the branch to monitor or leave it empty to show info from all branches.                                           | No       |
 
 ## Get you Personal Token
 
