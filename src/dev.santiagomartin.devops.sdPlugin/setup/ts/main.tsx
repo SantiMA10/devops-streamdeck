@@ -8,7 +8,7 @@ const SetupForm: React.FC = () => {
 
   const onSave = () => {
     if (token && name) {
-      window.opener.dispatchEvent(
+      window.opener.document.dispatchEvent(
         new CustomEvent("saveAccount", { detail: { name, token, domain } })
       );
     }

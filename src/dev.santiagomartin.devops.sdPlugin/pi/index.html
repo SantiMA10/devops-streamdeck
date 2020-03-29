@@ -3,35 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>dev.santiagomartin.devops - Property Inspector</title>
-    <link rel="stylesheet" href="css/sdpi.css">
+    <link rel="stylesheet" href="css/sdpi.css" />
   </head>
 
   <body>
-    <div class="sdpi-wrapper">
-      <div class="sdpi-item">
-        <label class="sdpi-item-label" for="token">token*</label>
-        <input class="sdpi-item-value" id="token" type="password" required >
-      </div>
-      <div class="sdpi-item">
-        <label class="sdpi-item-label" for="repo">username/repo*</label>
-        <input class="sdpi-item-value" id="repo" type="text" required >
-      </div>
-      <div id="branch-group" class="sdpi-item">
-        <label class="sdpi-item-label" for="branch">branch</label>
-        <input class="sdpi-item-value" id="branch" type="text" placeholder="leave it empty to show from all branches">
-      </div>
-      <div id="domain-group" class="sdpi-item">
-        <label class="sdpi-item-label" for="domain">domain</label>
-        <input class="sdpi-item-value" id="domain" type="text" placeholder="add here your self-hosted domain">
-      </div>
-      <div class="sdpi-item">
-        <button class="sdpi-item-value" id="github">How it works?</button>
-      </div>
-      <div class="sdpi-item">
-        <button class="sdpi-item-value" id="setup">Setup</button>
-      </div>
-    <div>
+    <div class="sdpi-wrapper" id="app"></div>
 
-    <script src="main.ts"></script>
+    <script src="ts/main.tsx"></script>
   </body>
 </html>

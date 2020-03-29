@@ -276,7 +276,7 @@ option {
 }
 
 .sdpi-item > *:not(.sdpi-item-label):not(meter):not(details):not(canvas) {
-  min-height: 26px;
+  min-height: 26px !important;
   padding: 0px 4px 0px 4px;
 }
 
