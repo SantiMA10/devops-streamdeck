@@ -41,6 +41,7 @@ export class GitHubAction {
 
   public getUrl() {
     const url = `${this.domain}/repos/${this.repo}/actions/runs`;
+    console.log(url);
 
     if (this.branch) {
       return `${url}?branch=${this.branch}`;

@@ -1,29 +1,16 @@
 import { WebsocketBridge } from "./ts/bridge/WebsocketBridge";
 import { ActionFactory } from "./ts/actions/ActionFactory";
 
-var websocket: WebSocket | null = null;
-var pluginUUID = null;
-
-var DestinationEnum = Object.freeze({
-  HARDWARE_AND_SOFTWARE: 0,
-  HARDWARE_ONLY: 1,
-  SOFTWARE_ONLY: 2
-});
-
-var timer;
-
 function connectElgatoStreamDeckSocket(
-  inPort,
-  inPluginUUID,
-  inRegisterEvent,
-  inInfo
+  inPort: string,
+  inPluginUUID: string,
+  inRegisterEvent: any,
+  inInfo: any
 ) {
-  pluginUUID = inPluginUUID;
-
   // Open the web socket
-  websocket = new WebSocket("ws://127.0.0.1:" + inPort);
+  const websocket = new WebSocket("ws://127.0.0.1:" + inPort);
 
-  function registerPlugin(inPluginUUID) {
+  function registerPlugin(inPluginUUID: string) {
     var json = {
       event: inRegisterEvent,
       uuid: inPluginUUID
@@ -34,7 +21,7 @@ function connectElgatoStreamDeckSocket(
 
   websocket.onopen = function() {
     // WebSocket is connected, send message
-    registerPlugin(pluginUUID);
+    registerPlugin(inPluginUUID);
   };
 
   websocket.onmessage = function(evt) {
