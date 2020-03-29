@@ -1,6 +1,7 @@
 import { GitHubAction } from "./GitHubAction";
 import { Bridge } from "../bridge/Bridge";
 import { GitLabAction } from "./GitLabAction";
+import { NetlifyAction } from "./NetlifyAction";
 
 interface Options {
   action: string;
@@ -20,6 +21,13 @@ export class ActionFactory {
         return new GitHubAction({ ...settings, bridge });
       case "dev.santiagomartin.devops.gitlab.action":
         return new GitLabAction({ ...settings, bridge });
+      case "dev.santiagomartin.devops.netlify.action":
+        const netlifySettings = {
+          branch: settings?.branch,
+          token: settings?.token,
+          siteId: settings?.repo
+        };
+        return new NetlifyAction({ ...netlifySettings, bridge });
     }
   }
 }

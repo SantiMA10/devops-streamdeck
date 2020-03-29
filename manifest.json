@@ -11,7 +11,7 @@
         }
       ],
       "SupportedInMultiActions": false,
-      "Tooltip": "Check the status of you GitHub Actions.",
+      "Tooltip": "Check the status of your GitHub Actions.",
       "UUID": "dev.santiagomartin.devops.github.action"
     },
     {
@@ -25,8 +25,22 @@
         }
       ],
       "SupportedInMultiActions": false,
-      "Tooltip": "Check the status of you GitLab CI.",
+      "Tooltip": "Check the status of your GitLab CI.",
       "UUID": "dev.santiagomartin.devops.gitlab.action"
+    },
+    {
+      "Icon": "images/netlify/actionIcon",
+      "Name": "Netlify Status",
+      "States": [
+        {
+          "Image": "images/netlify/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the status of your Netlify project.",
+      "UUID": "dev.santiagomartin.devops.netlify.action"
     }
   ],
   "SDKVersion": 2,
@@ -35,7 +49,7 @@
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
   "CodePath": "dist/dev.santiagomartin.devops.sdPlugin/plugin/index.html",
-  "Description": "Check the status of your GitLab CI or GitHub Actions.",
+  "Description": "Check the status of your GitLab CI, GitHub Actions or Netlify.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
