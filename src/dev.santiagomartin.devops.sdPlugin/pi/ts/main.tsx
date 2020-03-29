@@ -115,6 +115,7 @@ function connectElgatoStreamDeckSocket(
       save={save}
       openUrl={openUrl}
       websocket={websocket}
+      action={actionInfo.action}
     />,
     mountNode
   );

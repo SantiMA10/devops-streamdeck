@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 interface MainPIProps {
+  action: string;
   save: (ops: { value: string; id: string }) => void;
   openUrl: (url: string) => void;
   websocket: WebSocket;
@@ -12,7 +13,7 @@ interface MainPIProps {
 }
 
 export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
-  const { save, openUrl, settings, websocket } = props;
+  const { save, openUrl, settings, websocket, action } = props;
 
   const [accounts, setAccounts] = useState({} as any);
   const [account, setAccount] = useState(settings.account);
@@ -81,7 +82,9 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
         </button>
       </div>
       <div className="sdpi-item">
-        <label className="sdpi-item-label">username/repo*</label>
+        <label className="sdpi-item-label">
+          {action.includes("netlify") ? "site id" : "username/repo*"}
+        </label>
         <input
           className="sdpi-item-value"
           id="repo"
