@@ -15,7 +15,7 @@ describe("GitLabAction", () => {
       const subject = new GitLabAction({
         repo: "SantiMA10/devops-streamdeck",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -25,11 +25,25 @@ describe("GitLabAction", () => {
       );
     });
 
+    it("returns an URL with the given transformed repo when there is a subgroup", () => {
+      const subject = new GitLabAction({
+        repo: "SantiMA10/subgroup/devops-streamdeck",
+        token,
+        bridge,
+      });
+
+      const url = subject.getUrl();
+
+      expect(url).toEqual(
+        expect.stringContaining("SantiMA10%2Fsubgroup%2Fdevops-streamdeck")
+      );
+    });
+
     it("uses the default GitLab domain if no other domain is give", () => {
       const subject = new GitLabAction({
         repo: "SantiMA10/devops-streamdeck",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -42,7 +56,7 @@ describe("GitLabAction", () => {
         repo: "SantiMA10/devops-streamdeck",
         domain: "https://gitlab.santiagomartin.dev",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -57,7 +71,7 @@ describe("GitLabAction", () => {
         repo: "SantiMA10/devops-streamdeck",
         branch: "master",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -69,7 +83,7 @@ describe("GitLabAction", () => {
       const subject = new GitLabAction({
         repo: "SantiMA10/devops-streamdeck",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -83,7 +97,7 @@ describe("GitLabAction", () => {
   describe("#load", () => {
     beforeEach(() => {
       window.fetch = jest.fn(async () => ({
-        json: async () => [{ status: "completed" }]
+        json: async () => [{ status: "completed" }],
       })) as any;
     });
 
@@ -93,7 +107,7 @@ describe("GitLabAction", () => {
       await subject.load();
 
       expect(window.fetch).toHaveBeenCalledWith(expect.any(String), {
-        headers: { authorization: `Bearer ${token}` }
+        headers: { authorization: `Bearer ${token}` },
       });
     });
 
@@ -129,7 +143,7 @@ describe("GitLabAction", () => {
 
     it("returns 'not found' if the response contains 0 pipelines", async () => {
       window.fetch = jest.fn(async () => ({
-        json: async () => []
+        json: async () => [],
       })) as any;
       const subject = new GitLabAction({ repo, token, bridge });
 

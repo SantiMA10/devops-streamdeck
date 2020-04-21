@@ -17,7 +17,7 @@ export class GitLabAction {
 
   public constructor({ token, repo, domain, branch, bridge }: Options) {
     this.token = token;
-    this.repo = repo ? repo.replace("/", "%2F") : undefined;
+    this.repo = repo ? repo.replace(/\//g, "%2F") : undefined;
     this.domain = domain || "https://gitlab.com";
     this.branch = branch;
     this.bridge = bridge;
@@ -26,8 +26,8 @@ export class GitLabAction {
   public async load() {
     try {
       const pipelines = await fetch(this.getUrl(), {
-        headers: { authorization: `Bearer ${this.token}` }
-      }).then(res => res.json());
+        headers: { authorization: `Bearer ${this.token}` },
+      }).then((res) => res.json());
 
       if (pipelines.length === 0) {
         return { status: "not found" };
