@@ -21,7 +21,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
       - run: yarn build
       - run: yarn test
         env:
@@ -39,7 +46,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
       - run: yarn build
       - name: Generate .streamDeckPlugin
         run: ./tools/mac/DistributionTool -b -i ./dist/dev.santiagomartin.devops.sdPlugin -o ./release/
