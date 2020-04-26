@@ -54,14 +54,14 @@ export class GitHubAction extends Action {
   }
 
   public getState({ status }: { status?: string | undefined }): number {
-    if (!status) {
-      return States.DEFAULT;
+    if (status == "failure") {
+      return States.FAIL;
     }
 
     if (status === "completed") {
       return States.SUCCESS;
     }
 
-    return States.FAIL;
+    return States.DEFAULT;
   }
 }

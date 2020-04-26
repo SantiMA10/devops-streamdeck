@@ -54,14 +54,14 @@ export class GitLabAction extends Action {
   }
 
   public getState({ status }: { status?: string | undefined }): number {
-    if (!status) {
-      return States.DEFAULT;
+    if (status == "failed") {
+      return States.FAIL;
     }
 
     if (status === "success") {
       return States.SUCCESS;
     }
 
-    return States.FAIL;
+    return States.DEFAULT;
   }
 }
