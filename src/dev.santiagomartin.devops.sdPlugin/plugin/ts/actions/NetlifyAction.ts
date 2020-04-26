@@ -51,14 +51,14 @@ export class NetlifyAction extends Action {
   }
 
   public getState({ status }: { status?: string | undefined }): number {
-    if (!status) {
-      return States.DEFAULT;
+    if (status === "error") {
+      return States.FAIL;
     }
 
     if (status === "ready") {
       return States.SUCCESS;
     }
 
-    return States.FAIL;
+    return States.DEFAULT;
   }
 }
