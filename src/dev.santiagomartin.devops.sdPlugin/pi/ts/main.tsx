@@ -13,25 +13,25 @@ function connectElgatoStreamDeckSocket(
 
   const websocket = new WebSocket("ws://localhost:" + inPort);
 
-  websocket.onopen = function() {
+  websocket.onopen = function () {
     websocket.send(
       JSON.stringify({
         event: inRegisterEvent,
-        uuid: inUUID
+        uuid: inUUID,
       })
     );
 
     websocket.send(
       JSON.stringify({
         event: "getGlobalSettings",
-        context: inUUID
+        context: inUUID,
       })
     );
   };
 
   let globalSettings: any = {};
 
-  websocket.addEventListener("message", function({ data }) {
+  websocket.addEventListener("message", function ({ data }) {
     const { event, payload } = JSON.parse(data);
 
     switch (event) {
@@ -41,7 +41,7 @@ function connectElgatoStreamDeckSocket(
     }
   });
 
-  document.addEventListener("saveAccount", e => {
+  document.addEventListener("saveAccount", (e) => {
     const { detail } = e as CustomEvent;
 
     globalSettings[`${detail.name}-${detail.token}-${detail.domain}`] = detail;
@@ -50,36 +50,35 @@ function connectElgatoStreamDeckSocket(
       JSON.stringify({
         event: "setGlobalSettings",
         context: inUUID,
-        payload: globalSettings
+        payload: globalSettings,
       })
     );
     websocket.send(
       JSON.stringify({
         event: "getGlobalSettings",
         context: inUUID,
-        payload: globalSettings
+        payload: globalSettings,
       })
     );
   });
 
-  document.addEventListener("removeAccount", e => {
+  document.addEventListener("removeAccount", (e) => {
     const { detail } = e as CustomEvent;
 
     delete globalSettings[`${detail.key}`];
-    console.log({ detail, globalSettings });
 
     websocket.send(
       JSON.stringify({
         event: "setGlobalSettings",
         context: inUUID,
-        payload: globalSettings
+        payload: globalSettings,
       })
     );
     websocket.send(
       JSON.stringify({
         event: "getGlobalSettings",
         context: inUUID,
-        payload: globalSettings
+        payload: globalSettings,
       })
     );
   });
@@ -92,7 +91,7 @@ function connectElgatoStreamDeckSocket(
       action: actionInfo.action,
       event: "setSettings",
       context: inUUID,
-      payload: actionInfo.payload.settings
+      payload: actionInfo.payload.settings,
     };
 
     websocket.send(JSON.stringify(json));
@@ -102,8 +101,8 @@ function connectElgatoStreamDeckSocket(
       JSON.stringify({
         event: "openUrl",
         payload: {
-          url
-        }
+          url,
+        },
       })
     );
   };

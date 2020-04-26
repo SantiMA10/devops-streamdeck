@@ -1,4 +1,5 @@
 import { Bridge } from "../bridge/Bridge";
+import { Action } from "./Action";
 
 interface Options {
   siteId: string;
@@ -7,17 +8,16 @@ interface Options {
   bridge: Bridge;
 }
 
-export class NetlifyAction {
+export class NetlifyAction extends Action {
   private siteId: string;
   private token: string;
   private branch?: string;
-  private bridge: Bridge;
 
   public constructor({ siteId, branch, token, bridge }: Options) {
+    super(bridge);
     this.siteId = siteId;
     this.branch = branch;
     this.token = token;
-    this.bridge = bridge;
   }
 
   public getUrl() {
@@ -33,8 +33,8 @@ export class NetlifyAction {
   public async load() {
     try {
       const deploys = await fetch(this.getUrl(), {
-        headers: { authorization: `Bearer ${this.token}` }
-      }).then(res => res.json());
+        headers: { authorization: `Bearer ${this.token}` },
+      }).then((res) => res.json());
 
       if (deploys.length === 0) {
         return { status: "not found" };
@@ -46,17 +46,7 @@ export class NetlifyAction {
     }
   }
 
-  public async onKeyUp() {
-    if (!this.siteId || !this.token) {
-      return this.bridge.setTitle({ title: "needs config" });
-    }
-
-    this.bridge.setTitle({ title: "loading..." });
-    const { status } = await this.load();
-    this.bridge.setTitle({ title: status });
-  }
-
-  public async onWillAppear() {
-    await this.onKeyUp();
+  public isConfigured(): boolean {
+    return !this.siteId || !this.token;
   }
 }

@@ -1,11 +1,12 @@
 import { GitHubAction } from "./GitHubAction";
 import { Bridge } from "../bridge/Bridge";
+import { FakeBridge } from "../bridge/FakeBridge";
 
 describe("GitHubAction", () => {
   let bridge: Bridge;
 
   beforeEach(() => {
-    bridge = { setTitle: jest.fn() };
+    bridge = new FakeBridge();
 
     beforeEach(() => {
       window.fetch = jest.fn(
@@ -15,10 +16,10 @@ describe("GitHubAction", () => {
               workflow_runs: [
                 {
                   id: 60928826,
-                  status: "completed"
-                }
-              ]
-            })
+                  status: "completed",
+                },
+              ],
+            }),
           } as any)
       );
     });
@@ -29,7 +30,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const url = subject.getUrl();
@@ -43,7 +44,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const url = subject.getUrl();
@@ -56,7 +57,7 @@ describe("GitHubAction", () => {
         bridge,
         token: "token",
         domain: "https://github.santiagomartin.dev",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const url = subject.getUrl();
@@ -70,7 +71,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const url = subject.getUrl();
@@ -85,7 +86,7 @@ describe("GitHubAction", () => {
         bridge,
         branch: "master",
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const url = subject.getUrl();
@@ -99,7 +100,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       await subject.load();
@@ -114,7 +115,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       await subject.load();
@@ -129,7 +130,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const { status } = await subject.load();
@@ -141,13 +142,13 @@ describe("GitHubAction", () => {
       window.fetch = async () =>
         ({
           json: async () => ({
-            total_count: 0
-          })
+            total_count: 0,
+          }),
         } as any);
       const subject = new GitHubAction({
         bridge,
         token: "token",
-        repo: "SantiMA10/devops-streamdeck"
+        repo: "SantiMA10/devops-streamdeck",
       });
 
       const { status } = await subject.load();
@@ -172,7 +173,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         token: "token",
         repo: "devops-streamdeck",
-        bridge
+        bridge,
       });
 
       await subject.onKeyUp();
@@ -184,7 +185,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         token: "token",
         repo: "devops-streamdeck",
-        bridge
+        bridge,
       });
 
       await subject.onKeyUp();
@@ -196,7 +197,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         token: null as any,
         repo: "",
-        bridge
+        bridge,
       });
 
       await subject.onKeyUp();
@@ -208,7 +209,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         token: "",
         repo: null as any,
-        bridge
+        bridge,
       });
 
       await subject.onKeyUp();
@@ -222,7 +223,7 @@ describe("GitHubAction", () => {
       const subject = new GitHubAction({
         token: "token",
         repo: "devops-streamdeck",
-        bridge
+        bridge,
       });
       const spy = jest.spyOn(subject, "onKeyUp");
       spy.mockImplementation(async () => {});

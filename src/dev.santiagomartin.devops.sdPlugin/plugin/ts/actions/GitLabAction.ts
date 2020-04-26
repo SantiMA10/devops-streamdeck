@@ -1,4 +1,5 @@
 import { Bridge } from "../bridge/Bridge";
+import { Action } from "./Action";
 
 interface Options {
   token: string;
@@ -8,19 +9,18 @@ interface Options {
   bridge: Bridge;
 }
 
-export class GitLabAction {
+export class GitLabAction extends Action {
   private token: string;
   private repo: string | undefined;
   private domain: string;
   private branch: string | undefined;
-  private bridge: Bridge;
 
   public constructor({ token, repo, domain, branch, bridge }: Options) {
+    super(bridge);
     this.token = token;
     this.repo = repo ? repo.replace(/\//g, "%2F") : undefined;
     this.domain = domain || "https://gitlab.com";
     this.branch = branch;
-    this.bridge = bridge;
   }
 
   public async load() {
@@ -49,17 +49,7 @@ export class GitLabAction {
     return url;
   }
 
-  public async onKeyUp() {
-    if (!this.token || !this.repo) {
-      return this.bridge.setTitle({ title: "needs config" });
-    }
-
-    this.bridge.setTitle({ title: "loading..." });
-    const { status } = await this.load();
-    this.bridge.setTitle({ title: status });
-  }
-
-  public async onWillAppear() {
-    await this.onKeyUp();
+  public isConfigured(): boolean {
+    return !this.token || !this.repo;
   }
 }

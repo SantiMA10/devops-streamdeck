@@ -1,5 +1,6 @@
 import { GitLabAction } from "./GitLabAction";
 import { Bridge } from "../bridge/Bridge";
+import { FakeBridge } from "../bridge/FakeBridge";
 
 describe("GitLabAction", () => {
   const repo = "SantiMA10/devops-streamdeck";
@@ -7,7 +8,7 @@ describe("GitLabAction", () => {
   let bridge: Bridge;
 
   beforeEach(() => {
-    bridge = { setTitle: jest.fn() };
+    bridge = new FakeBridge();
   });
 
   describe("#getUrl", () => {

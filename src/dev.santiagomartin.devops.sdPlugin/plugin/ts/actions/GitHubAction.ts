@@ -1,4 +1,5 @@
 import { Bridge } from "../bridge/Bridge";
+import { Action } from "./Action";
 
 interface Options {
   domain?: string;
@@ -8,26 +9,25 @@ interface Options {
   bridge: Bridge;
 }
 
-export class GitHubAction {
+export class GitHubAction extends Action {
   private domain: string;
   private token: string;
   private repo: string;
   private branch: string | undefined;
-  private bridge: Bridge;
 
   public constructor({ domain, token, repo, branch, bridge }: Options) {
+    super(bridge);
     this.domain = domain || "https://api.github.com";
     this.token = token;
     this.repo = repo;
     this.branch = branch;
-    this.bridge = bridge;
   }
 
   public async load() {
     try {
       const { workflow_runs, total_count } = await fetch(this.getUrl(), {
-        headers: { authorization: `Bearer ${this.token}` }
-      }).then(res => res.json());
+        headers: { authorization: `Bearer ${this.token}` },
+      }).then((res) => res.json());
 
       if (total_count === 0) {
         return { status: "not found" };
@@ -41,7 +41,6 @@ export class GitHubAction {
 
   public getUrl() {
     const url = `${this.domain}/repos/${this.repo}/actions/runs`;
-    console.log(url);
 
     if (this.branch) {
       return `${url}?branch=${this.branch}`;
@@ -50,17 +49,7 @@ export class GitHubAction {
     return url;
   }
 
-  public async onKeyUp() {
-    if (!this.token || !this.repo) {
-      return this.bridge.setTitle({ title: "needs config" });
-    }
-
-    this.bridge.setTitle({ title: "loading..." });
-    const { status } = await this.load();
-    this.bridge.setTitle({ title: status });
-  }
-
-  public async onWillAppear() {
-    await this.onKeyUp();
+  public isConfigured(): boolean {
+    return !this.token || !this.repo;
   }
 }

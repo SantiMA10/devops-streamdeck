@@ -1,5 +1,6 @@
 import { NetlifyAction } from "./NetlifyAction";
 import { Bridge } from "../bridge/Bridge";
+import { FakeBridge } from "../bridge/FakeBridge";
 
 describe("NetlifyAction", () => {
   const siteId = "site-id";
@@ -10,11 +11,11 @@ describe("NetlifyAction", () => {
     window.fetch = jest.fn(
       async () =>
         ({
-          json: async () => [{ state: "ok" }]
+          json: async () => [{ state: "ok" }],
         } as any)
     );
 
-    bridge = { setTitle: jest.fn() };
+    bridge = new FakeBridge();
   });
 
   describe("#getUrl", () => {
@@ -41,7 +42,7 @@ describe("NetlifyAction", () => {
         siteId,
         branch: "master",
         token,
-        bridge
+        bridge,
       });
 
       const url = subject.getUrl();
@@ -65,7 +66,7 @@ describe("NetlifyAction", () => {
     it("returns 'not found' if there isn't any deployment", async () => {
       window.fetch = async () =>
         ({
-          json: async () => []
+          json: async () => [],
         } as any);
       const subject = new NetlifyAction({ siteId, token, bridge });
 
@@ -99,7 +100,7 @@ describe("NetlifyAction", () => {
       await subject.load();
 
       expect(window.fetch).toHaveBeenCalledWith(expect.any(String), {
-        headers: { authorization: `Bearer ${token}` }
+        headers: { authorization: `Bearer ${token}` },
       });
     });
   });
@@ -143,7 +144,7 @@ describe("NetlifyAction", () => {
       const subject = new NetlifyAction({
         siteId,
         token,
-        bridge
+        bridge,
       });
       const spy = jest.spyOn(subject, "onKeyUp");
       spy.mockImplementation(async () => {});
