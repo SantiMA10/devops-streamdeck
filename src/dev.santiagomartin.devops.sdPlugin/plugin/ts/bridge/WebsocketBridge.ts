@@ -21,6 +21,19 @@ export class WebsocketBridge implements Bridge {
     this.context = context;
   }
 
+  public setState({ state }: { state: number }): void {
+    this.websocket.send(
+      JSON.stringify({
+        event: "setState",
+        context: this.context,
+        payload: {
+          state,
+          target: DestinationEnum.HARDWARE_AND_SOFTWARE,
+        },
+      })
+    );
+  }
+
   public setImage({ image }: { image: string }): void {
     this.websocket.send(
       JSON.stringify({

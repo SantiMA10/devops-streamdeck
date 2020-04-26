@@ -1,5 +1,5 @@
 import { Bridge } from "../bridge/Bridge";
-import { Action } from "./Action";
+import { Action, States } from "./Action";
 
 interface Options {
   domain?: string;
@@ -51,5 +51,17 @@ export class GitHubAction extends Action {
 
   public isConfigured(): boolean {
     return !this.token || !this.repo;
+  }
+
+  public getState({ status }: { status?: string | undefined }): number {
+    if (!status) {
+      return States.DEFAULT;
+    }
+
+    if (status === "completed") {
+      return States.SUCCESS;
+    }
+
+    return States.FAIL;
   }
 }
