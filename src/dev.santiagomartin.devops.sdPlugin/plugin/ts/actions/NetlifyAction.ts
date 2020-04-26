@@ -1,5 +1,5 @@
 import { Bridge } from "../bridge/Bridge";
-import { Action } from "./Action";
+import { Action, States } from "./Action";
 
 interface Options {
   siteId: string;
@@ -48,5 +48,17 @@ export class NetlifyAction extends Action {
 
   public isConfigured(): boolean {
     return !this.siteId || !this.token;
+  }
+
+  public getState({ status }: { status?: string | undefined }): number {
+    if (!status) {
+      return States.DEFAULT;
+    }
+
+    if (status === "ready") {
+      return States.SUCCESS;
+    }
+
+    return States.FAIL;
   }
 }

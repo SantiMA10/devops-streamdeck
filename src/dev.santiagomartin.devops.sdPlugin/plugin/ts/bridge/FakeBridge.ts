@@ -9,4 +9,5 @@ export enum DestinationEnum {
 export class FakeBridge implements Bridge {
   public setImage = jest.fn();
   public setTitle = jest.fn();
+  public setState = jest.fn();
 }

@@ -5,6 +5,16 @@
       "Name": "GitHub Actions Status",
       "States": [
         {
+          "Image": "images/github/actionSuccessImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/github/actionFailImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
           "Image": "images/github/actionDefaultImage",
           "TitleAlignment": "bottom",
           "FontSize": "11"
@@ -19,6 +29,16 @@
       "Name": "GitLab CI Status",
       "States": [
         {
+          "Image": "images/gitlab/actionSuccessImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/gitlab/actionFailImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
           "Image": "images/gitlab/actionDefaultImage",
           "TitleAlignment": "bottom",
           "FontSize": "11"
@@ -32,6 +52,16 @@
       "Icon": "images/netlify/actionIcon",
       "Name": "Netlify Status",
       "States": [
+        {
+          "Image": "images/netlify/actionSuccessImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/netlify/actionFailImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
         {
           "Image": "images/netlify/actionDefaultImage",
           "TitleAlignment": "bottom",
@@ -53,7 +83,7 @@
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
-  "Version": "1.3.1",
+  "Version": "1.4.0",
   "OS": [
     {
       "Platform": "mac",
