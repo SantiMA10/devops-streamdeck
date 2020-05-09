@@ -3,43 +3,52 @@ import { Bridge } from "../bridge/Bridge";
 
 interface Options {
   token: string;
-  url: string;
+  name: string;
   bridge: Bridge;
 }
 
 export class VercelAction extends Action {
   private token: string;
-  private url: string;
+  private name: string;
 
-  public constructor({ token, url, bridge }: Options) {
+  public constructor({ token, name: url, bridge }: Options) {
     super(bridge);
 
     this.token = token;
-    this.url = url;
+    this.name = url;
   }
 
   public async load(): Promise<{ status: string }> {
     try {
-      const { readyState } = await fetch(this.getUrl(), {
-        headers: { Authorization: `Bearer ${this.token}` },
-      }).then((res) => res.json());
+      const { id: projectId } = await fetch(
+        `https://api.vercel.com/v1/projects/${this.name}`,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      ).then((res) => res.json());
+      const { deployments } = await fetch(
+        `https://api.vercel.com/v5/now/deployments?projectId=${projectId}`,
+        {
+          headers: { Authorization: `Bearer ${this.token}` },
+        }
+      ).then((res) => res.json());
 
-      if (!readyState) {
-        return { status: "error" };
+      if (deployments.length === 0) {
+        return { status: "not found" };
       }
 
-      return { status: readyState };
+      return { status: deployments[0].state };
     } catch (e) {
       return { status: "error" };
     }
   }
 
   public getUrl(): string {
-    return `https://api.vercel.com/v11/now/deployments/get?url=${this.url}`;
+    throw new Error("Multiple URL");
   }
 
   public isConfigured(): boolean {
-    return !!this.url && !!this.token;
+    return !!this.name && !!this.token;
   }
 
   public getState({ status }: { status?: string | undefined }): number {

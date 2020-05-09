@@ -6,18 +6,18 @@ describe("VercelAction", () => {
   const bridge = new FakeBridge();
 
   describe("#isConfigured", () => {
-    it("returns true if the settings contains url and token", () => {
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+    it("returns true if the settings contains name and token", () => {
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const result = subject.isConfigured();
 
       expect(result).toEqual(true);
     });
 
-    it("return false if the url is missing", () => {
+    it("return false if the name is missing", () => {
       const subject = new VercelAction({
         token: "token",
-        url: null as any,
+        name: null as any,
         bridge,
       });
 
@@ -29,7 +29,7 @@ describe("VercelAction", () => {
     it("return false if the token is missing", () => {
       const subject = new VercelAction({
         token: null as any,
-        url: "url",
+        name: "url",
         bridge,
       });
 
@@ -38,34 +38,22 @@ describe("VercelAction", () => {
       expect(result).toEqual(false);
     });
 
-    it("return false if the token and url are missing", () => {
+    it("return false if the token and name are missing", () => {
       const subject = new VercelAction({
         token: undefined as any,
-        url: undefined as any,
+        name: undefined as any,
         bridge,
       });
 
       const result = subject.isConfigured();
 
       expect(result).toEqual(false);
-    });
-  });
-
-  describe("#getUrl", () => {
-    it("returns the vercel api url", () => {
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
-
-      const url = subject.getUrl();
-
-      expect(url).toEqual(
-        "https://api.vercel.com/v11/now/deployments/get?url=url"
-      );
     });
   });
 
   describe("#getState", () => {
     it("returns State.SUCCESS if the status value is 'READY'", () => {
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const state = subject.getState({ status: "READY" });
 
@@ -73,7 +61,7 @@ describe("VercelAction", () => {
     });
 
     it("returns State.FAIL if the status value is 'ERROR'", () => {
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const state = subject.getState({ status: "ERROR" });
 
@@ -81,7 +69,7 @@ describe("VercelAction", () => {
     });
 
     it("returns State.DEFAULT if the status value is any other value", () => {
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const state = subject.getState({ status: "BUILDING" });
 
@@ -94,35 +82,51 @@ describe("VercelAction", () => {
       window.fetch = jest.fn(() => {
         throw new Error("booom");
       });
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const { status } = await subject.load();
 
       expect(status).toEqual("error");
     });
 
-    it("returns 'READY' if the request contains 'READY' in 'readyState'", async () => {
+    it("returns 'READY' if the request contains 'READY' in 'state'", async () => {
       window.fetch = jest.fn(
         async () =>
           ({
-            json: async () => ({ readyState: "READY" }),
+            json: async () => ({ deployments: [{ state: "READY" }] }),
           } as any)
       );
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const { status } = await subject.load();
 
       expect(status).toEqual("READY");
     });
 
+    it("returns 'not found' if the deployments array is empty", async () => {
+      window.fetch = jest.fn(
+        async () =>
+          ({
+            json: async () => ({ deployments: [] }),
+          } as any)
+      );
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
+
+      const { status } = await subject.load();
+
+      expect(status).toEqual("not found");
+    });
+
     it("makes the request with the given token", async () => {
-      window.fetch = jest.fn();
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      window.fetch = jest.fn().mockImplementationOnce(async () => ({
+        json: async () => ({ id: "projectId" }),
+      }));
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       await subject.load();
 
       expect(window.fetch).toHaveBeenCalledWith(
-        expect.anything(),
+        "https://api.vercel.com/v5/now/deployments?projectId=projectId",
         expect.objectContaining({ headers: { Authorization: "Bearer token" } })
       );
     });
@@ -134,7 +138,7 @@ describe("VercelAction", () => {
             json: async () => ({}),
           } as any)
       );
-      const subject = new VercelAction({ token: "token", url: "url", bridge });
+      const subject = new VercelAction({ token: "token", name: "url", bridge });
 
       const { status } = await subject.load();
 

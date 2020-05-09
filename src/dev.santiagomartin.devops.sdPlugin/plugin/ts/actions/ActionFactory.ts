@@ -32,7 +32,7 @@ export class ActionFactory {
       case "dev.santiagomartin.devops.vercel.action":
         const vercelSettings = {
           token: settings?.token,
-          url: settings?.repo,
+          name: settings?.repo,
         };
         return new VercelAction({ ...vercelSettings, bridge });
     }

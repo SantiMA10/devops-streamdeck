@@ -133,7 +133,7 @@ const getRepoLabel = (action: string) => {
   }
 
   if (action.includes("vercel")) {
-    return "url*";
+    return "project name*";
   }
 
   return "username/repo*";
