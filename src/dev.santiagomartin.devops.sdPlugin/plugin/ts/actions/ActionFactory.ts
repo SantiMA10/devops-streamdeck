@@ -2,6 +2,7 @@ import { GitHubAction } from "./GitHubAction";
 import { Bridge } from "../bridge/Bridge";
 import { GitLabAction } from "./GitLabAction";
 import { NetlifyAction } from "./NetlifyAction";
+import { VercelAction } from "./VercelActions";
 
 interface Options {
   action: string;
@@ -25,9 +26,15 @@ export class ActionFactory {
         const netlifySettings = {
           branch: settings?.branch,
           token: settings?.token,
-          siteId: settings?.repo
+          siteId: settings?.repo,
         };
         return new NetlifyAction({ ...netlifySettings, bridge });
+      case "dev.santiagomartin.devops.vercel.action":
+        const vercelSettings = {
+          token: settings?.token,
+          url: settings?.repo,
+        };
+        return new VercelAction({ ...vercelSettings, bridge });
     }
   }
 }
