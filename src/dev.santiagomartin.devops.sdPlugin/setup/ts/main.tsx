@@ -16,6 +16,12 @@ const SetupForm: React.FC = () => {
     window.close();
   };
 
+  const openUrl = (url: String) => {
+    window.opener.document.dispatchEvent(
+      new CustomEvent("openUrl", { detail: { url } })
+    );
+  };
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -26,6 +32,12 @@ const SetupForm: React.FC = () => {
         <a
           target="_blank"
           href="https://github.com/SantiMA10/devops-streamdeck#how-it-works"
+          onClick={(e) => {
+            e.preventDefault();
+            openUrl(
+              "https://github.com/SantiMA10/devops-streamdeck#how-it-works"
+            );
+          }}
         >
           instructions here
         </a>
@@ -38,7 +50,7 @@ const SetupForm: React.FC = () => {
           type="text"
           placeholder="Account name"
           value={name}
-          onChange={event => setName(event.target.value)}
+          onChange={(event) => setName(event.target.value)}
           required
         />
       </div>
@@ -49,7 +61,7 @@ const SetupForm: React.FC = () => {
           type="password"
           placeholder="Paste here your personal token"
           value={token}
-          onChange={event => setToken(event.target.value)}
+          onChange={(event) => setToken(event.target.value)}
           required
         />
       </div>
@@ -60,7 +72,7 @@ const SetupForm: React.FC = () => {
           type="text"
           placeholder="Add here your self-hosted domain"
           value={domain}
-          onChange={event => setDomain(event.target.value)}
+          onChange={(event) => setDomain(event.target.value)}
         />
       </div>
       <button style={{ marginTop: 10 }} onClick={onSave}>
