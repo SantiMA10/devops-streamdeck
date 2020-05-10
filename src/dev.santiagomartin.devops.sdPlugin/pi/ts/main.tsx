@@ -62,6 +62,12 @@ function connectElgatoStreamDeckSocket(
     );
   });
 
+  document.addEventListener("openUrl", (e) => {
+    const { detail } = e as CustomEvent;
+
+    openUrl(detail.url);
+  });
+
   document.addEventListener("removeAccount", (e) => {
     const { detail } = e as CustomEvent;
 
@@ -96,6 +102,7 @@ function connectElgatoStreamDeckSocket(
 
     websocket.send(JSON.stringify(json));
   };
+
   const openUrl = (url: string) => {
     websocket.send(
       JSON.stringify({
