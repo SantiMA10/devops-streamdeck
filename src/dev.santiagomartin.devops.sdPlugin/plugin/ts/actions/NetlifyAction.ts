@@ -47,7 +47,7 @@ export class NetlifyAction extends Action {
   }
 
   public isConfigured(): boolean {
-    return !this.siteId || !this.token;
+    return !!this.siteId && !!this.token;
   }
 
   public getState({ status }: { status?: string | undefined }): number {

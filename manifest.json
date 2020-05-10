@@ -71,6 +71,30 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Check the status of your Netlify project.",
       "UUID": "dev.santiagomartin.devops.netlify.action"
+    },
+    {
+      "Icon": "images/vercel/actionIcon",
+      "Name": "Vercel",
+      "States": [
+        {
+          "Image": "images/vercel/actionSuccessImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/vercel/actionFailImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/vercel/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the status of your Vercel project.",
+      "UUID": "dev.santiagomartin.devops.vercel.action"
     }
   ],
   "SDKVersion": 2,
@@ -79,11 +103,11 @@
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
   "CodePath": "dist/dev.santiagomartin.devops.sdPlugin/plugin/index.html",
-  "Description": "Check the status of your GitLab CI, GitHub Actions or Netlify.",
+  "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify and Vercel.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
-  "Version": "1.4.0",
+  "Version": "1.5.0",
   "OS": [
     {
       "Platform": "mac",

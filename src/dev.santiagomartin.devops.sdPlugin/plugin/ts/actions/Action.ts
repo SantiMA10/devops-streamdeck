@@ -15,7 +15,7 @@ export abstract class Action {
   public abstract getState(options: { status?: string }): number;
 
   public async onKeyUp() {
-    if (this.isConfigured()) {
+    if (!this.isConfigured()) {
       this.bridge.setState({ state: States.DEFAULT });
       return this.bridge.setTitle({ title: "needs config" });
     }

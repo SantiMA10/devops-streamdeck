@@ -20,7 +20,7 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
   const [repo, setRepo] = useState(settings.repo);
   const [branch, setBranch] = useState(settings.branch);
 
-  const onMessage = function({ data }: MessageEvent) {
+  const onMessage = function ({ data }: MessageEvent) {
     const { event, payload } = JSON.parse(data);
 
     switch (event) {
@@ -82,35 +82,35 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
         </button>
       </div>
       <div className="sdpi-item">
-        <label className="sdpi-item-label">
-          {action.includes("netlify") ? "site id" : "username/repo*"}
-        </label>
+        <label className="sdpi-item-label">{getRepoLabel(action)}</label>
         <input
           className="sdpi-item-value"
           id="repo"
           type="text"
           required
           value={repo}
-          onChange={event => {
+          onChange={(event) => {
             setRepo(event.target.value);
             save({ value: event.target.value, id: "repo" });
           }}
         />
       </div>
-      <div id="branch-group" className="sdpi-item">
-        <label className="sdpi-item-label">branch</label>
-        <input
-          className="sdpi-item-value"
-          id="branch"
-          type="text"
-          placeholder="leave it empty to show from all branches"
-          value={branch}
-          onChange={event => {
-            setBranch(event.target.value);
-            save({ value: event.target.value, id: "branch" });
-          }}
-        />
-      </div>
+      {!action.includes("vercel") && (
+        <div id="branch-group" className="sdpi-item">
+          <label className="sdpi-item-label">branch</label>
+          <input
+            className="sdpi-item-value"
+            id="branch"
+            type="text"
+            placeholder="leave it empty to show from all branches"
+            value={branch}
+            onChange={(event) => {
+              setBranch(event.target.value);
+              save({ value: event.target.value, id: "branch" });
+            }}
+          />
+        </div>
+      )}
 
       <div className="sdpi-item">
         <button
@@ -125,4 +125,16 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
       </div>
     </div>
   );
+};
+
+const getRepoLabel = (action: string) => {
+  if (action.includes("netlify")) {
+    return "site id*";
+  }
+
+  if (action.includes("vercel")) {
+    return "project name*";
+  }
+
+  return "username/repo*";
 };

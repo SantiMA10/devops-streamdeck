@@ -50,7 +50,7 @@ export class GitHubAction extends Action {
   }
 
   public isConfigured(): boolean {
-    return !this.token || !this.repo;
+    return !!this.token && !!this.repo;
   }
 
   public getState({ status }: { status?: string | undefined }): number {
