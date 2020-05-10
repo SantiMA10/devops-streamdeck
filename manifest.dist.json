@@ -103,7 +103,7 @@
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
   "CodePath": "plugin/index.html",
-  "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify and Vercel.",
+  "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify and Vercel projects.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
