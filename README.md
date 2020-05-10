@@ -2,6 +2,7 @@
 
 > Check the status of your CI/CD environments using your Stream Deck
 
+- [DevOps for Stream Deck](#devops-for-stream-deck)
 - [How it works?](#how-it-works)
   - [Install this plugin](#install-this-plugin)
   - [Configuration options](#configuration-options)
@@ -9,6 +10,9 @@
     - [GitHub](#github)
     - [GitLab](#gitlab)
     - [Netlify](#netlify)
+      - [Personal Token](#personal-token)
+      - [Site ID](#site-id)
+    - [Vercel](#vercel)
 - [References](#references)
 - [Contributing](#contributing)
 - [Issues](#issues)
@@ -50,6 +54,10 @@ You have to create a new [Personal Token](https://app.netlify.com/user/applicati
 #### Site ID
 
 You can find your site id in the settings tab of your project, with the **API ID** name.
+
+### Vercel
+
+You have to create a new [Token](https://vercel.com/account/tokens).
 
 # References
 
