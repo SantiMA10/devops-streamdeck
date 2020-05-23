@@ -1,20 +1,20 @@
-# DevOps for Stream Deck
+# DevOps for Stream Deck <!-- omit in toc -->
 
 > Check the status of your CI/CD environments using your Stream Deck
 
-- [DevOps for Stream Deck](#devops-for-stream-deck)
 - [How it works?](#how-it-works)
   - [Install this plugin](#install-this-plugin)
   - [Configuration options](#configuration-options)
-  - [Get you Personal Token](#get-you-personal-token)
+  - [Compatible services](#compatible-services)
     - [GitHub](#github)
     - [GitLab](#gitlab)
     - [Netlify](#netlify)
-      - [Personal Token](#personal-token)
-      - [Site ID](#site-id)
     - [Vercel](#vercel)
+- [How to setup the dev environment](#how-to-setup-the-dev-environment)
+  - [Project structure](#project-structure)
 - [References](#references)
 - [Contributing](#contributing)
+- [Support the project](#support-the-project)
 - [Issues](#issues)
 
 # How it works?
@@ -33,33 +33,110 @@ You can find it at the Stream Deck Store. 🚀
 | `project name`  | Your project name in Vercel                                                                                              | Vercel                          | Yes      |
 | `branch`        | Select the branch to monitor or leave it empty to show info from all branches.                                           | GitHub, GitLab, Netlify         | No       |
 
-## Get you Personal Token
+## Compatible services
 
 ### GitHub
+
+<details>
+ <summary>Show information</summary>
 
 You have to create a new [Personal Token](https://github.com/settings/tokens) with the following scopes: **repo:status**, **repo_deployment** and **public_repo**.
 
 ![image](https://user-images.githubusercontent.com/7255298/76707971-b819b500-66f3-11ea-8392-84ee9bb67deb.png)
 
+</details>
+
 ### GitLab
+
+<details>
+ <summary>Show information</summary>
 
 You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
 
 ![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
 
+</details>
+
 ### Netlify
 
-#### Personal Token
+<details>
+ <summary>Show information</summary>
+
+#### Personal Token <!-- omit in toc -->
 
 You have to create a new [Personal Token](https://app.netlify.com/user/applications#personal-access-tokens).
 
-#### Site ID
+#### Site ID <!-- omit in toc -->
 
 You can find your site id in the settings tab of your project, with the **API ID** name.
 
+</details>
+
 ### Vercel
 
+<details>
+ <summary>Show information</summary>
+
 You have to create a new [Token](https://vercel.com/account/tokens).
+
+</details>
+
+# How to setup the dev environment
+
+1. Install all the dependencies
+
+```bash
+yarn
+```
+
+2. Build the project for the first time, the project uses [Parcel as bundler](https://parceljs.org/) to handle React and TypeScript
+
+```bash
+yarn build
+```
+
+3. Create a symlink form the folder you clone the repository
+
+```
+ln -s devops-streamdeck/dist/dev.santiagomartin.devops.sdPlugin ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins/dev.santiagomartin.devops.sdPlugin
+```
+
+1. Run the proper dev command, since we are using Parcel to build the project we have a few dev commands to start Parcel in watch mode
+
+```
+// For Property Inspector
+yarn:dev:pi
+
+// For Plugin
+yarn:dev:plugin
+
+// For setup screen, where the user add the configuration for each service
+yarn:dev:setup
+```
+
+## Project structure
+
+    .
+    ├── node_modules
+    ├── dist
+    ├── images
+    ├── node_modules
+    ├── release
+    ├── src
+      ├── dev.santiagomartin.devops.sdPlugin
+        ├── pi // all code related with Property Inspector (build with React and TypeScript)
+        ├── plugin // all code related with Plugin (build with TypeScript)
+        ├── setup // all code related with Setup page (build with React and TypeScript)
+    ├── tools // contains the elgato tools to build the project using GitHub Actions
+    ├── .babelrc
+    ├── .gitignore
+    ├── jest.config
+    ├── LICENSE
+    ├── manifest.json
+    ├── package.json
+    ├── README.md
+    ├── tsconfig.json
+    └── yarn.lock
 
 # References
 
@@ -67,7 +144,11 @@ You have to create a new [Token](https://vercel.com/account/tokens).
 
 # Contributing
 
-Thank you for considering contributing to the **DevOps for Stream Deck**. Feel free to send in any pull requests
+Thank you for considering contributing to the **DevOps for Stream Deck**. Feel free to send in any pull requests.
+
+# Support the project
+
+If you like the project, you can subscribe to my [Twitch channel](https://twitch.tv/santima10), where I do live coding of this and other projects.
 
 # Issues
 
