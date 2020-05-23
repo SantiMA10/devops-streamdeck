@@ -21,7 +21,7 @@
         }
       ],
       "SupportedInMultiActions": false,
-      "Tooltip": "Check the status of your GitHub Actions.",
+      "Tooltip": "Check the status of you GitHub Actions.",
       "UUID": "dev.santiagomartin.devops.github.action"
     },
     {
@@ -45,7 +45,7 @@
         }
       ],
       "SupportedInMultiActions": false,
-      "Tooltip": "Check the status of your GitLab CI.",
+      "Tooltip": "Check the status of you GitLab CI.",
       "UUID": "dev.santiagomartin.devops.gitlab.action"
     },
     {
@@ -99,10 +99,10 @@
   ],
   "SDKVersion": 2,
   "Author": "SantiMA10",
-  "PropertyInspectorPath": "dist/dev.santiagomartin.devops.sdPlugin/pi/index.html",
+  "PropertyInspectorPath": "pi/index.html",
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
-  "CodePath": "dist/dev.santiagomartin.devops.sdPlugin/plugin/index.html",
+  "CodePath": "plugin/index.html",
   "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify and Vercel projects.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
