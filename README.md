@@ -10,6 +10,7 @@
     - [GitLab](#gitlab)
     - [Netlify](#netlify)
     - [Vercel](#vercel)
+    - [Travis-CI.com / Travis-CI.org](#travis-cicom--travis-ciorg)
 - [How to setup the dev environment](#how-to-setup-the-dev-environment)
   - [Project structure](#project-structure)
 - [References](#references)
@@ -78,6 +79,17 @@ You can find your site id in the settings tab of your project, with the **API ID
  <summary>Show information</summary>
 
 You have to create a new [Token](https://vercel.com/account/tokens).
+
+</details>
+
+### Travis-CI.com / Travis-CI.org
+
+<details>
+ <summary>Show information</summary>
+
+You have to create a new [Token](https://developer.travis-ci.com/authentication).
+
+By default the actions uses the **travis-ci.org** api, if you want to use it with **travis-ci.com** set https://api.travis-ci.com as domain in the configuration.
 
 </details>
 
