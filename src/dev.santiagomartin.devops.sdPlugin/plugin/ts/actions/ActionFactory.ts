@@ -3,6 +3,7 @@ import { Bridge } from "../bridge/Bridge";
 import { GitLabAction } from "./GitLabAction";
 import { NetlifyAction } from "./NetlifyAction";
 import { VercelAction } from "./VercelActions";
+import { TravisCIAction } from "./TravisCIAction";
 
 interface Options {
   action: string;
@@ -22,6 +23,8 @@ export class ActionFactory {
         return new GitHubAction({ ...settings, bridge });
       case "dev.santiagomartin.devops.gitlab.action":
         return new GitLabAction({ ...settings, bridge });
+      case "dev.santiagomartin.devops.travis.action":
+        return new TravisCIAction({ ...settings, bridge });
       case "dev.santiagomartin.devops.netlify.action":
         const netlifySettings = {
           branch: settings?.branch,

@@ -95,6 +95,30 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Check the status of your Vercel project.",
       "UUID": "dev.santiagomartin.devops.vercel.action"
+    },
+    {
+      "Icon": "images/travis/actionIcon",
+      "Name": "Travis CI",
+      "States": [
+        {
+          "Image": "images/travis/actionSuccessImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/travis/actionFailImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        },
+        {
+          "Image": "images/travis/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "11"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the status of your Travis CI project.",
+      "UUID": "dev.santiagomartin.devops.travis.action"
     }
   ],
   "SDKVersion": 2,
@@ -103,11 +127,11 @@
   "Category": "DevOps for Stream Deck",
   "CategoryIcon": "images/categoryIcon",
   "CodePath": "plugin/index.html",
-  "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify and Vercel projects.",
+  "Description": "Check the status of your GitLab CI, GitHub Actions, Netlify, Vercel and Travis CI projects.",
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
-  "Version": "1.5.0",
+  "Version": "1.6.0",
   "OS": [
     {
       "Platform": "mac",
