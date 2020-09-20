@@ -26,13 +26,13 @@ You can find it at the Stream Deck Store. 🚀
 
 ## Configuration options
 
-| Field           | Description                                                                                                              | Service                         | Required |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | -------- |
-| `account`       | Here you can select your [Personal Token](#get-you-personal-token) and custom `domain` if you use a self-hosted version. | GitHub, GitLab, Netlify, Vercel | Yes      |
-| `username/repo` | Configure here the repo for GitLab/GitHub                                                                                | GitHub, GitLab                  | Yes      |
-| `siteId`        | Your [Netlify Site Id](#site-id)                                                                                         | Netlify                         | Yes      |
-| `project name`  | Your project name in Vercel                                                                                              | Vercel                          | Yes      |
-| `branch`        | Select the branch to monitor or leave it empty to show info from all branches.                                           | GitHub, GitLab, Netlify         | No       |
+| Field           | Description                                                                                                              | Service                                 | Required |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- | -------- |
+| `account`       | Here you can select your [Personal Token](#get-you-personal-token) and custom `domain` if you use a self-hosted version. | GitHub, GitLab, Netlify, Vercel, Travis | Yes      |
+| `username/repo` | Configure here the repo for GitLab/GitHub                                                                                | GitHub, GitLab, Travis                  | Yes      |
+| `siteId`        | Your [Netlify Site Id](#site-id)                                                                                         | Netlify                                 | Yes      |
+| `project name`  | Your project name in Vercel                                                                                              | Vercel                                  | Yes      |
+| `branch`        | Select the branch to monitor or leave it empty to show info from all branches.                                           | GitHub, GitLab, Netlify, Travis         | No       |
 
 ## Compatible services
 
