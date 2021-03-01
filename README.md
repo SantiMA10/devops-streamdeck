@@ -7,8 +7,8 @@
   - [Configuration options](#configuration-options)
   - [Compatible services](#compatible-services)
     - [GitHub](#github)
-  - [For public repositories](#for-public-repositories)
-  - [For public/private repositories](#for-publicprivate-repositories)
+      - [For public repositories](#for-public-repositories)
+      - [For public/private repositories](#for-publicprivate-repositories)
     - [GitLab](#gitlab)
     - [Netlify](#netlify)
     - [Vercel](#vercel)
@@ -43,13 +43,13 @@ You can find it at the Stream Deck Store. 🚀
 <details>
  <summary>Show information</summary>
 
- ## For public repositories
+ #### For public repositories
 
 You have to create a new [Personal Token](https://github.com/settings/tokens) with the following scopes: **repo:status**, **repo_deployment** and **public_repo**.
 
 ![image](https://user-images.githubusercontent.com/7255298/76707971-b819b500-66f3-11ea-8392-84ee9bb67deb.png)
 
-## For public/private repositories
+#### For public/private repositories
 
 You have to create a new [Personal Token](https://github.com/settings/tokens) with all the repo scopes, otherwise you don't have access to your private repositories.
 
