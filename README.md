@@ -1,4 +1,4 @@
-# DevOps for Stream Deck <!-- omit in toc --> ![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Felgatostore-badge.herokuapp.com%2F%3Fidentifier%3Ddev.santiagomartin.devops)
+# DevOps for Stream Deck <!-- omit in toc --> [![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Felgatostore-badge.herokuapp.com%2F%3Fidentifier%3Ddev.santiagomartin.devops)](https://github.com/SantiMA10/elgatostore-badge)
 
 > Check the status of your CI/CD environments using your Stream Deck
 
