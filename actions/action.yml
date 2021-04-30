@@ -1,21 +1,12 @@
-name: "Hello World"
+name: "Build StreamDeck App"
 description: "Greet someone"
-inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
-    required: true
-    default: "World"
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
-      shell: bash
+    - name: Generate .streamDeckPlugin
+      run: ${{ github.action_path }}/tools/mac/DistributionTool -b -i ./dist/dev.santiagomartin.devops.sdPlugin -o ${{ github.action_path }}/release/
+    - name: Upload .streamDeckPlugin artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: action-dev.santiagomartin.devops.streamDeckPlugin
+        path: ${{ github.action_path }}/release/
