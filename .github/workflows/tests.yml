@@ -28,7 +28,7 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn build
-      - uses: SantiMA10/streamdeck-action
+      - uses: SantiMA10/streamdeck-action@v0.0.1
         with:
           input-directory: "/dist/dev.santiagomartin.devops.sdPlugin"
           output-directory: "/release"
