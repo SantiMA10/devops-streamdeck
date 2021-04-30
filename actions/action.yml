@@ -6,3 +6,6 @@ runs:
     - name: Generate .streamDeckPlugin
       run: ${{ github.action_path }}/tools/mac/DistributionTool -b -i ${{ github.workspace }}/dist/dev.santiagomartin.devops.sdPlugin -o ${{ github.action_path }}/release/
       shell: bash
+    - name: print info
+      run: echo ${{ runner.os }}
+      shell: bash
