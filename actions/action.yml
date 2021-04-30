@@ -1,5 +1,15 @@
 name: "Build StreamDeck App"
 description: "Greet someone"
+inputs:
+  input-directory:
+    description: "Where is your code"
+    required: true
+  output-directory:
+    description: "Where you want the .streamDeckPlugin to be stored"
+    required: true
 runs:
-  using: "node12"
-  main: "index.js"
+  using: "composite"
+  steps:
+    - name: Generate .streamDeckPlugin
+      run: ${{ github.action_path }}/tools/mac/DistributionTool -b -i ${{ github.workspace }}${{ inputs.input-directory }} -o ${{ github.workspace }}${{ inputs.output-directory }}
+      shell: bash
