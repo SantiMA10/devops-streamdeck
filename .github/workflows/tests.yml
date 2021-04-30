@@ -32,3 +32,8 @@ jobs:
         with:
           input-directory: "/dist/dev.santiagomartin.devops.sdPlugin"
           output-directory: "/release"
+      - name: Upload .streamDeckPlugin artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: action-dev.santiagomartin.devops.streamDeckPlugin
+          path: ./release/

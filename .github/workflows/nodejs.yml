@@ -60,7 +60,5 @@ jobs:
       - name: Upload .streamDeckPlugin artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          # Artifact name
           name: dev.santiagomartin.devops.streamDeckPlugin
-          # Directory containing files to upload
           path: ./release/
