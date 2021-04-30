@@ -4,8 +4,14 @@ runs:
   using: "composite"
   steps:
     - name: Generate .streamDeckPlugin
+      if: runner.os === 'macOS'
       run: ${{ github.action_path }}/tools/mac/DistributionTool -b -i ${{ github.workspace }}/dist/dev.santiagomartin.devops.sdPlugin -o ${{ github.action_path }}/release/
       shell: bash
-    - name: print info
-      run: echo ${{ runner.os }}
+    - name: Generate .streamDeckPlugin
+      if: runner.os === 'Windows'
+      run: "echo 'Sorry we cannot build the StreamDeck app on Windows: https://developer.elgato.com/documentation/stream-deck/sdk/exporting-your-plugin/'"
+      shell: bash
+    - name: Generate .streamDeckPlugin
+      if: runner.os === 'Linux'
+      run: "echo 'Sorry we cannot build the StreamDeck app on Linux: https://developer.elgato.com/documentation/stream-deck/sdk/exporting-your-plugin/'"
       shell: bash
