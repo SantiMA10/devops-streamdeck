@@ -28,12 +28,12 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn build
-      - uses: ./actions
+      - uses: SantiMA10/streamdeck-action
         with:
           input-directory: "/dist/dev.santiagomartin.devops.sdPlugin"
           output-directory: "/release"
       - name: Upload .streamDeckPlugin artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: action-dev.santiagomartin.devops.streamDeckPlugin
+          name: dev.santiagomartin.devops.streamDeckPlugin
           path: ./release/
