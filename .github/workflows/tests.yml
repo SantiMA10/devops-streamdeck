@@ -1,0 +1,23 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Test workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: actions/hello-world-composite-run-steps-action@v1
+        with:
+          who-to-greet: "Mona the Octocat"
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
