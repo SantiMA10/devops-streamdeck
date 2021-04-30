@@ -55,12 +55,12 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn build
-      - name: Generate .streamDeckPlugin
-        run: ./tools/mac/DistributionTool -b -i ./dist/dev.santiagomartin.devops.sdPlugin -o ./release/
+      - uses: SantiMA10/streamdeck-action@v0.0.1
+        with:
+          input-directory: "/dist/dev.santiagomartin.devops.sdPlugin"
+          output-directory: "/release"
       - name: Upload .streamDeckPlugin artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          # Artifact name
           name: dev.santiagomartin.devops.streamDeckPlugin
-          # Directory containing files to upload
           path: ./release/
