@@ -4,6 +4,7 @@ import { GitLabAction } from "./GitLabAction";
 import { NetlifyAction } from "./NetlifyAction";
 import { VercelAction } from "./VercelActions";
 import { TravisCIAction } from "./TravisCIAction";
+import { GitHubNotifications } from "./GitHubNotifications";
 
 interface Options {
   action: string;
@@ -38,6 +39,11 @@ export class ActionFactory {
           name: settings?.repo,
         };
         return new VercelAction({ ...vercelSettings, bridge });
+      case "dev.santiagomartin.devops.github.notification":
+        const notificationsSettings = {
+          token: settings?.token,
+        };
+        return new GitHubNotifications({ ...notificationsSettings, bridge })
     }
   }
 }
