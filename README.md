@@ -1,6 +1,6 @@
 # DevOps for Stream Deck <!-- omit in toc --> [![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Felgatostore-badge.herokuapp.com%2F%3Fidentifier%3Ddev.santiagomartin.devops)](https://github.com/SantiMA10/elgatostore-badge)
 
-> Check the status of your CI/CD environments using your Stream Deck
+> Check the status of your CI/CD environments or Notifications using your Stream Deck
 
 - [How it works?](#how-it-works)
   - [Install this plugin](#install-this-plugin)
@@ -9,6 +9,7 @@
     - [GitHub](#github)
       - [For public repositories](#for-public-repositories)
       - [For public/private repositories](#for-publicprivate-repositories)
+      - [For Notifications](#for-notifications)
     - [GitLab](#gitlab)
     - [Netlify](#netlify)
     - [Vercel](#vercel)
@@ -55,6 +56,11 @@ You have to create a new [Personal Token](https://github.com/settings/tokens) wi
 
 ![image](https://user-images.githubusercontent.com/7255298/109531364-17650680-7ab8-11eb-8172-bd658820f5da.png)
 
+#### For Notifications
+
+You have to create a new [Personal Token](https://github.com/settings/tokens) with notifications scopes, otherwise you don't have access to your notifications.
+
+![image](https://raw.githubusercontent.com/SantiMA10/devops-streamdeck/main/.github/images/notification-token.png)
 
 </details>
 
