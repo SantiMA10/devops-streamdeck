@@ -25,6 +25,30 @@
       "UUID": "dev.santiagomartin.devops.github.action"
     },
     {
+      "Icon": "images/github/actionIcon",
+      "Name": "GitHub Notifications",
+      "States": [
+        {
+          "Image": "images/github/noNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/github/haveNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/github/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check Notifications of your GitHub Account.",
+      "UUID": "dev.santiagomartin.devops.github.notifications"
+    },
+    {
       "Icon": "images/gitlab/actionIcon",
       "Name": "GitLab CI Status",
       "States": [

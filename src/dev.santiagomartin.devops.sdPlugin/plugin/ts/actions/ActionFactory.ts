@@ -39,7 +39,7 @@ export class ActionFactory {
           name: settings?.repo,
         };
         return new VercelAction({ ...vercelSettings, bridge });
-      case "dev.santiagomartin.devops.github.notification":
+      case "dev.santiagomartin.devops.github.notifications":
         const notificationsSettings = {
           token: settings?.token,
         };

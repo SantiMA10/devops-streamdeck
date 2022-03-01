@@ -18,11 +18,11 @@ export class GitHubNotifications extends Action {
 
   public async load() {
     try {
-      const { notifications } = await fetch(this.getUrl(), {
+      const notifications: Array<{id: string}> = await fetch(this.getUrl(), {
         headers: { authorization: `Bearer ${this.token}` },
       }).then((res) => res.json());
 
-      return { status: `${notifications.length} new Notifications` };
+      return { status: `${notifications.length} new Notif` };
     } catch {
       return { status: "error" };
     }
@@ -39,11 +39,11 @@ export class GitHubNotifications extends Action {
   }
 
   public getState({ status }: { status?: string | undefined }): number {
-    if (status === "0 new Notifications") {
+    if (status === "0 new Notif") {
       return States.SUCCESS;
     }
 
-    if (typeof status === "string" && status.includes("new Notifications")) {
+    if (typeof status === "string" && status.includes("new Notif")) {
       return States.FAIL;
     }
 
