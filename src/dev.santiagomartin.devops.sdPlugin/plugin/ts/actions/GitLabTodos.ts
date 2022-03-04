@@ -3,7 +3,7 @@ import { Action, States } from "./Action";
 
 interface Options {
   token: string;
-  domain: string | undefined;
+  domain?: string | undefined;
   bridge: Bridge;
 }
 
@@ -51,7 +51,7 @@ export class GitLabTodos extends Action {
     return States.DEFAULT;
   }
 
-  private getDomain(domain: string): string {
+  public getDomain(domain: string): string {
     if(!domain.includes("api/v4")) {
       const url = new URL("/api/v4", domain);
 
