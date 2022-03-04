@@ -73,6 +73,30 @@
       "UUID": "dev.santiagomartin.devops.gitlab.action"
     },
     {
+      "Icon": "images/gitlab/actionIcon",
+      "Name": "GitLab Todos",
+      "States": [
+        {
+          "Image": "images/gitlab/noNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/haveNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the number of your open Todos.",
+      "UUID": "dev.santiagomartin.devops.gitlab.todos"
+    },
+    {
       "Icon": "images/netlify/actionIcon",
       "Name": "Netlify Status",
       "States": [
