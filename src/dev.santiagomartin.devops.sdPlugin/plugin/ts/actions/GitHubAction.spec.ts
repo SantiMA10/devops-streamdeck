@@ -8,21 +8,19 @@ describe("GitHubAction", () => {
   beforeEach(() => {
     bridge = new FakeBridge();
 
-    beforeEach(() => {
-      window.fetch = jest.fn(
-        async () =>
-          ({
-            json: async () => ({
-              workflow_runs: [
-                {
-                  id: 60928826,
-                  status: "completed",
-                },
-              ],
-            }),
-          } as any)
-      );
-    });
+    window.fetch = jest.fn(
+      async () =>
+        ({
+          json: async () => ({
+            workflow_runs: [
+              {
+                id: 60928826,
+                status: "completed",
+              },
+            ],
+          }),
+        } as any)
+    );
   });
 
   describe("#getUrl", () => {

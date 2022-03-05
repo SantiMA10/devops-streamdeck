@@ -9,7 +9,7 @@ export enum States {
 export abstract class Action {
   public constructor(private bridge: Bridge) {}
 
-  public abstract async load(): Promise<{ status: string }>;
+  public abstract load(): Promise<{ status: string }>;
   public abstract getUrl(): string;
   public abstract isConfigured(): boolean;
   public abstract getState(options: { status?: string }): number;
