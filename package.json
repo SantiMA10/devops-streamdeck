@@ -11,23 +11,20 @@
     "test:watch": "jest --watch",
     "test:plugin": "yarn test plugin",
     "test:plugin:watch": "yarn test:watch",
-    "dev:setup": "parcel src/dev.santiagomartin.devops.sdPlugin/setup/index.html -d dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
-    "dev:pi": "parcel src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
-    "dev:plugin": "parcel src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build:setup": "parcel build src/dev.santiagomartin.devops.sdPlugin/setup/index.html -d dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
-    "build:pi": "parcel build src/dev.santiagomartin.devops.sdPlugin/pi/index.html -d dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./ --global connectElgatoStreamDeckSocket",
-    "build:plugin": "parcel build src/dev.santiagomartin.devops.sdPlugin/plugin/index.html -d dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./ --global connectElgatoStreamDeckSocket",
+    "dev:setup": "parcel src/dev.santiagomartin.devops.sdPlugin/setup/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
+    "dev:pi": "parcel src/dev.santiagomartin.devops.sdPlugin/pi/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./",
+    "dev:plugin": "parcel src/dev.santiagomartin.devops.sdPlugin/plugin/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./",
+    "build:setup": "parcel build src/dev.santiagomartin.devops.sdPlugin/setup/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/setup --public-url ./",
+    "build:pi": "parcel build src/dev.santiagomartin.devops.sdPlugin/pi/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/pi --public-url ./",
+    "build:plugin": "parcel build src/dev.santiagomartin.devops.sdPlugin/plugin/index.html --dist-dir dist/dev.santiagomartin.devops.sdPlugin/plugin --public-url ./",
     "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && yarn build:setup && cp manifest.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
   },
   "dependencies": {
-    "parcel-bundler": "^1.12.5",
+    "parcel": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@types/react": "^17.0.39",
@@ -37,5 +34,9 @@
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
     "whatwg-fetch": "^3.6.2"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "engines": {
+    "node": ">= 14"
   }
 }

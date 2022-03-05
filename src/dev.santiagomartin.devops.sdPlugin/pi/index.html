@@ -9,6 +9,9 @@
   <body>
     <div class="sdpi-wrapper" id="app"></div>
 
-    <script src="ts/main.tsx"></script>
+    <script type="module">
+      import connect from "./ts/main.tsx";
+      window.connectElgatoStreamDeckSocket = connect;
+    </script>
   </body>
 </html>
