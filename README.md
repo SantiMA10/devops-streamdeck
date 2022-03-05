@@ -1,4 +1,4 @@
-# DevOps for Stream Deck <!-- omit in toc --> [![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Felgatostore-badge.herokuapp.com%2F%3Fidentifier%3Ddev.santiagomartin.devops)](https://github.com/SantiMA10/elgatostore-badge)
+# DevOps for Stream Deck <!-- omit in toc --> [![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Felgatostore-badge.herokuapp.com%2F%3Fidentifier%3Ddev.santiagomartin.devops)](https://github.com/SantiMA10/elgatostore-badge) [![Node.js CI](https://github.com/SantiMA10/devops-streamdeck/actions/workflows/nodejs.yml/badge.svg)](https://github.com/SantiMA10/devops-streamdeck/actions/workflows/nodejs.yml)
 
 > Check the status of your CI/CD environments or Notifications using your Stream Deck
 
