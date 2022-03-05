@@ -20,22 +20,22 @@
     "build": "rm -Rf dist && yarn build:plugin && yarn build:pi && yarn build:setup && cp manifest.json dist/dev.santiagomartin.devops.sdPlugin/manifest.json && cp -Rf images dist/dev.santiagomartin.devops.sdPlugin/images"
   },
   "dependencies": {
-    "parcel-bundler": "^1.12.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "parcel-bundler": "^1.12.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.5",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.13",
     "jest": "^25.2.3",
     "nock": "^12.0.3",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.6.2"
   }
 }
