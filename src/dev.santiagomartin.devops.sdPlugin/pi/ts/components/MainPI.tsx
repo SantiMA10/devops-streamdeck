@@ -81,6 +81,8 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
           Remove
         </button>
       </div>
+
+      {!(action.includes("notification") || action.includes("todos")) && (
       <div className="sdpi-item">
         <label className="sdpi-item-label">{getRepoLabel(action)}</label>
         <input
@@ -95,7 +97,9 @@ export const MainPI: React.FC<MainPIProps> = (props: MainPIProps) => {
           }}
         />
       </div>
-      {!action.includes("vercel") && (
+      )}
+
+      {!(action.includes("vercel") || action.includes("notification") || action.includes("todos")) && (
         <div id="branch-group" className="sdpi-item">
           <label className="sdpi-item-label">branch</label>
           <input

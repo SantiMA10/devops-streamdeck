@@ -25,6 +25,30 @@
       "UUID": "dev.santiagomartin.devops.github.action"
     },
     {
+      "Icon": "images/github/actionIcon",
+      "Name": "GitHub Notifications",
+      "States": [
+        {
+          "Image": "images/github/noNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/github/haveNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/github/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check Notifications of your GitHub Account.",
+      "UUID": "dev.santiagomartin.devops.github.notifications"
+    },
+    {
       "Icon": "images/gitlab/actionIcon",
       "Name": "GitLab CI Status",
       "States": [
@@ -47,6 +71,30 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Check the status of you GitLab CI.",
       "UUID": "dev.santiagomartin.devops.gitlab.action"
+    },
+    {
+      "Icon": "images/gitlab/actionIcon",
+      "Name": "GitLab Todos",
+      "States": [
+        {
+          "Image": "images/gitlab/noNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/haveNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the number of your open Todos.",
+      "UUID": "dev.santiagomartin.devops.gitlab.todos"
     },
     {
       "Icon": "images/netlify/actionIcon",
