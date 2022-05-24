@@ -6,6 +6,7 @@ import { VercelAction } from "./VercelActions";
 import { TravisCIAction } from "./TravisCIAction";
 import { GitHubNotifications } from "./GitHubNotifications";
 import { GitLabTodos } from "./GitLabTodos";
+import { GitLabMRs } from "./GitLabMRs";
 
 interface Options {
   action: string;
@@ -51,6 +52,12 @@ export class ActionFactory {
           domain: settings?.domain,
         };
         return new GitLabTodos({ ...glNotificationsSettings, bridge })
+      case "dev.santiagomartin.devops.gitlab.mrs":
+        const glMRSettings = {
+          token: settings?.token,
+          domain: settings?.domain,
+        };
+        return new GitLabMRs({ ...glMRSettings, bridge })
     }
   }
 }

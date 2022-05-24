@@ -97,6 +97,30 @@
       "UUID": "dev.santiagomartin.devops.gitlab.todos"
     },
     {
+      "Icon": "images/gitlab/actionIcon",
+      "Name": "GitLab MRs",
+      "States": [
+        {
+          "Image": "images/gitlab/noNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/haveNotificationsImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        },
+        {
+          "Image": "images/gitlab/actionDefaultImage",
+          "TitleAlignment": "bottom",
+          "FontSize": "7"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Check the number of your open MRs that are assigned to you.",
+      "UUID": "dev.santiagomartin.devops.gitlab.mrs"
+    },
+    {
       "Icon": "images/netlify/actionIcon",
       "Name": "Netlify Status",
       "States": [
@@ -179,7 +203,7 @@
   "Name": "DevOps for StreamDeck",
   "Icon": "images/pluginIcon",
   "URL": "https://santiagomartin.dev",
-  "Version": "1.7.0",
+  "Version": "1.8.0",
   "OS": [
     {
       "Platform": "mac",
