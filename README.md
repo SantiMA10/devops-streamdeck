@@ -2,7 +2,7 @@
 
 > Check the status of your CI/CD environments or Notifications using your Stream Deck
 
-- [How does it work?](#how-does-it-work)
+- [How it works?](#how-it-works)
   - [Install this plugin](#install-this-plugin)
   - [Configuration options](#configuration-options)
   - [Compatible services](#compatible-services)
@@ -21,7 +21,7 @@
   - [Support the project](#support-the-project)
   - [Issues](#issues)
 
-# How does it work?
+# How it works?
 
 ## Install this plugin
 
