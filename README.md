@@ -121,25 +121,25 @@ By default the actions uses the **travis-ci.org** api, if you want to use it wit
 
 1. Install all the dependencies
 
-```bash
+```shell
 yarn
 ```
 
 2. Build the project for the first time, the project uses [Parcel as bundler](https://parceljs.org/) to handle React and TypeScript
 
-```bash
+```shell
 yarn build
 ```
 
 3. Create a symlink form the folder you clone the repository
 
-```
+```shell
 ln -s devops-streamdeck/dist/dev.santiagomartin.devops.sdPlugin ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins/dev.santiagomartin.devops.sdPlugin
 ```
 
 1. Run the proper dev command, since we are using Parcel to build the project we have a few dev commands to start Parcel in watch mode
 
-```
+```parcel
 // For Property Inspector
 yarn:dev:pi
 
@@ -152,6 +152,7 @@ yarn:dev:setup
 
 ### Project structure
 
+```text
     .
     ├── node_modules
     ├── dist
@@ -173,6 +174,7 @@ yarn:dev:setup
     ├── README.md
     ├── tsconfig.json
     └── yarn.lock
+```
 
 ## References
 
