@@ -11,7 +11,6 @@
       - [For public/private repositories](#for-publicprivate-repositories)
       - [For Notifications](#for-notifications)
     - [GitLab](#gitlab)
-      - [Gitlab Todos](#gitlab-todos)
     - [Netlify](#netlify)
     - [Vercel](#vercel)
     - [Travis-CI.com / Travis-CI.org](#travis-cicom--travis-ciorg)
@@ -70,15 +69,12 @@ You have to create a new [Personal Token](https://github.com/settings/tokens) wi
 <details>
  <summary>Show information</summary>
 
-You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
+You have to create a new [Personal Access Token](https://gitlab.com/profile/personal_access_tokens). Set the scope as follows:
 
-![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
-
-#### Gitlab Todos
-
-You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
-
-![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
+| Required for |    Scope    |
+|--------------|:-----------:|
+| CI Status    | `read_api`  |
+| ToDos        | `read_user` |
 
 </details>
 
