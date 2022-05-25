@@ -11,16 +11,15 @@
       - [For public/private repositories](#for-publicprivate-repositories)
       - [For Notifications](#for-notifications)
     - [GitLab](#gitlab)
-      - [Gitlab Todos](#gitlab-todos)
     - [Netlify](#netlify)
     - [Vercel](#vercel)
     - [Travis-CI.com / Travis-CI.org](#travis-cicom--travis-ciorg)
-- [How to setup the dev environment](#how-to-setup-the-dev-environment)
-  - [Project structure](#project-structure)
-- [References](#references)
-- [Contributing](#contributing)
-- [Support the project](#support-the-project)
-- [Issues](#issues)
+  - [How to setup the dev environment](#how-to-setup-the-dev-environment)
+    - [Project structure](#project-structure)
+  - [References](#references)
+  - [Contributing](#contributing)
+  - [Support the project](#support-the-project)
+  - [Issues](#issues)
 
 # How it works?
 
@@ -45,7 +44,7 @@ You can find it at the Stream Deck Store. 🚀
 <details>
  <summary>Show information</summary>
 
- #### For public repositories
+#### For public repositories
 
 You have to create a new [Personal Token](https://github.com/settings/tokens) with the following scopes: **repo:status**, **repo_deployment** and **public_repo**.
 
@@ -70,15 +69,12 @@ You have to create a new [Personal Token](https://github.com/settings/tokens) wi
 <details>
  <summary>Show information</summary>
 
-You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
+You have to create a new [Personal Access Token](https://gitlab.com/profile/personal_access_tokens). Set the scope as follows:
 
-![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
-
-#### Gitlab Todos
-
-You have to create a new [Personal Token](https://gitlab.com/profile/personal_access_tokens) with the following scope: **api**.
-
-![image](https://user-images.githubusercontent.com/7255298/76709422-dd5ff080-66fe-11ea-980a-91b164b5c283.png)
+| Required for |    Scope    |
+|--------------|:-----------:|
+| CI Status    | `read_api`  |
+| ToDos        | `read_user` |
 
 </details>
 
@@ -117,29 +113,29 @@ By default the actions uses the **travis-ci.org** api, if you want to use it wit
 
 </details>
 
-# How to setup the dev environment
+## How to setup the dev environment
 
 1. Install all the dependencies
 
-```bash
+```shell
 yarn
 ```
 
 2. Build the project for the first time, the project uses [Parcel as bundler](https://parceljs.org/) to handle React and TypeScript
 
-```bash
+```shell
 yarn build
 ```
 
 3. Create a symlink form the folder you clone the repository
 
-```
+```shell
 ln -s devops-streamdeck/dist/dev.santiagomartin.devops.sdPlugin ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins/dev.santiagomartin.devops.sdPlugin
 ```
 
 1. Run the proper dev command, since we are using Parcel to build the project we have a few dev commands to start Parcel in watch mode
 
-```
+```parcel
 // For Property Inspector
 yarn:dev:pi
 
@@ -150,8 +146,9 @@ yarn:dev:plugin
 yarn:dev:setup
 ```
 
-## Project structure
+### Project structure
 
+```text
     .
     ├── node_modules
     ├── dist
@@ -173,19 +170,20 @@ yarn:dev:setup
     ├── README.md
     ├── tsconfig.json
     └── yarn.lock
+```
 
-# References
+## References
 
 - [Steam Deck SDK docs](https://developer.elgato.com/documentation/)
 
-# Contributing
+## Contributing
 
 Thank you for considering contributing to the **DevOps for Stream Deck**. Feel free to send in any pull requests.
 
-# Support the project
+## Support the project
 
 If you like the project, you can subscribe to my [Twitch channel](https://twitch.tv/santima10), where I do live coding of this and other projects.
 
-# Issues
+## Issues
 
 Please report any [issues](https://github.com/SantiMA10/devops-streamdeck/issues). Ideas for new excuse features are also welcomed.
