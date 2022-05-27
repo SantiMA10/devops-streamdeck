@@ -101,12 +101,12 @@
       "Name": "GitLab MRs",
       "States": [
         {
-          "Image": "images/gitlab/noNotificationsImage",
+          "Image": "images/gitlab/noMRsImage",
           "TitleAlignment": "bottom",
           "FontSize": "7"
         },
         {
-          "Image": "images/gitlab/haveNotificationsImage",
+          "Image": "images/gitlab/haveMRsImage",
           "TitleAlignment": "bottom",
           "FontSize": "7"
         },
