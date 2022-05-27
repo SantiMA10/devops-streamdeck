@@ -74,6 +74,7 @@ You have to create a new [Personal Access Token](https://gitlab.com/profile/pers
 | Required for |    Scope    |
 |--------------|:-----------:|
 | CI Status    | `read_api`  |
+| MRs          | `read_api`  |
 | ToDos        | `read_user` |
 
 </details>
