@@ -36,7 +36,7 @@ jobs:
   build:
     runs-on: [macos-latest]
     needs: [tests]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -55,7 +55,7 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn build
-      - uses: SantiMA10/streamdeck-action@v0.0.1
+      - uses: SantiMA10/streamdeck-action@2-use-stream-deck-cli
         with:
           input-directory: "/dist/dev.santiagomartin.devops.sdPlugin"
           output-directory: "/release"
